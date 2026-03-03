@@ -7,9 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f1b2d;
-      --card: #16263d;
+      --bg: #0e1a2b;
+      --card: #15253d;
       --accent: #4ea1ff;
+      --accent-soft: rgba(78,161,255,0.18);
       --text: #e6eefc;
       --muted: #9fb3d1;
     }
@@ -18,9 +19,10 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #0b1626 0%, #0f1b2d 100%);
+      background: radial-gradient(circle at 20% 20%, #122742 0%, #0b1524 60%, #08101c 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     .container {
@@ -30,81 +32,118 @@
     }
 
     header {
-      padding: 80px 0 60px;
+      padding: 90px 0 70px;
       text-align: center;
+      position: relative;
+    }
+
+    /* abstract glow */
+    .hero-glow {
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(78,161,255,0.35) 0%, rgba(78,161,255,0) 70%);
+      top: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      filter: blur(40px);
+      animation: floatGlow 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes floatGlow {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(20px); }
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: 2.9rem;
       font-weight: 700;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .subtitle {
       color: var(--muted);
-      font-size: 1.1rem;
-      margin-bottom: 28px;
+      font-size: 1.15rem;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
     }
 
     .btn {
       display: inline-block;
       background: var(--accent);
       color: #00122a;
-      padding: 12px 26px;
-      border-radius: 10px;
+      padding: 13px 28px;
+      border-radius: 12px;
       font-weight: 600;
       text-decoration: none;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(78,161,255,0.35);
+      box-shadow: 0 12px 28px rgba(78,161,255,0.35);
     }
 
-    section {
-      padding: 70px 0;
+    /* animated chart */
+    .chart-bg {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 520px;
+      opacity: 0.35;
+      z-index: 0;
     }
+
+    section { padding: 80px 0; }
 
     .section-title {
-      font-size: 1.9rem;
-      margin-bottom: 30px;
+      font-size: 2rem;
+      margin-bottom: 34px;
       text-align: center;
     }
 
     .kpi-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
     }
 
     .card {
       background: var(--card);
-      padding: 24px;
-      border-radius: 16px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      padding: 26px;
+      border-radius: 18px;
+      transition: all 0.28s ease;
+      border: 1px solid rgba(255,255,255,0.04);
     }
 
     .card:hover {
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.45);
+      border-color: rgba(78,161,255,0.35);
     }
 
     .kpi-value {
-      font-size: 2rem;
+      font-size: 2.1rem;
       font-weight: 700;
       color: var(--accent);
     }
 
     .kpi-label {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
     .projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      gap: 26px;
     }
 
     .project-title {
@@ -114,8 +153,49 @@
 
     .tags {
       margin-top: 10px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       color: var(--muted);
+    }
+
+    /* skills */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .skill-pill {
+      padding: 8px 14px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(78,161,255,0.35);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #cfe4ff;
+    }
+
+    /* about */
+    .about-text {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    /* contact photo */
+    .contact {
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 14px;
+      border: 2px solid rgba(78,161,255,0.5);
     }
 
     footer {
@@ -140,29 +220,44 @@
 <body>
 
   <header class="container">
+    <div class="hero-glow"></div>
+
     <h1>Ria Singh</h1>
-    <p class="subtitle">Data Analyst | Turning data into business insights</p>
+    <p class="subtitle">Transforming Research into Data Driven Insights</p>
     <a href="#projects" class="btn">View Projects</a>
+
+    <svg class="chart-bg" viewBox="0 0 500 120">
+      <polyline
+        fill="none"
+        stroke="#4ea1ff"
+        stroke-width="3"
+        points="0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40">
+        <animate attributeName="points" dur="6s" repeatCount="indefinite"
+          values="0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40;
+                  0,95 80,85 140,90 200,60 260,65 320,45 380,50 440,25 500,35;
+                  0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40" />
+      </polyline>
+    </svg>
   </header>
 
   <section class="container reveal">
     <h2 class="section-title">Key Impact</h2>
     <div class="kpi-grid">
       <div class="card">
-        <div class="kpi-value" data-target="13220000">0</div>
-        <div class="kpi-label">Revenue Analyzed</div>
-      </div>
-      <div class="card">
-        <div class="kpi-value" data-target="100000">0</div>
+        <div class="kpi-value" data-target="1000000">0</div>
         <div class="kpi-label">Records Processed</div>
       </div>
       <div class="card">
-        <div class="kpi-value" data-target="6">0</div>
+        <div class="kpi-value" data-target="4">0</div>
         <div class="kpi-label">Dashboards Built</div>
       </div>
       <div class="card">
-        <div class="kpi-value" data-target="5">0</div>
+        <div class="kpi-value" data-target="8">0</div>
         <div class="kpi-label">Core Tools</div>
+      </div>
+      <div class="card">
+        <div class="kpi-value" data-target="6">0</div>
+        <div class="kpi-label">Analytics Projects</div>
       </div>
     </div>
   </section>
@@ -171,28 +266,47 @@
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects">
       <div class="card">
-        <div class="project-title">Brazil E-commerce Analysis</div>
+        <div class="project-title">Olist Marketplace Analysis</div>
         <p>End-to-end funnel, delivery, and seller performance analysis.</p>
         <div class="tags">SQL · Python · Power BI</div>
       </div>
       <div class="card">
-        <div class="project-title">Loan Default Risk Model</div>
+        <div class="project-title">Loan Default Risk Analysis</div>
         <p>EDA and predictive modeling to identify high-risk applicants.</p>
         <div class="tags">Python · ML · EDA</div>
       </div>
       <div class="card">
-        <div class="project-title">Housing Market Insights</div>
-        <p>Market trend dashboard analyzing pricing and inventory patterns.</p>
-        <div class="tags">SQL · Power BI</div>
+        <div class="project-title">Fake News Detection</div>
+        <p>NLP model to classify and detect misleading information.</p>
+        <div class="tags">Python · NLP · ML</div>
       </div>
     </div>
   </section>
 
   <section class="container reveal">
+    <h2 class="section-title">Core Skills</h2>
+    <div class="skills">
+      <div class="skill-pill">SQL</div>
+      <div class="skill-pill">Python</div>
+      <div class="skill-pill">Power BI</div>
+      <div class="skill-pill">Excel</div>
+      <div class="skill-pill">Tableau</div>
+      <div class="skill-pill">Machine Learning</div>
+      <div class="skill-pill">Hypothesis Testing</div>
+      <div class="skill-pill">A/B Testing</div>
+    </div>
+  </section>
+
+  <section class="container reveal">
     <h2 class="section-title">About</h2>
-    <p style="max-width: 750px; margin: auto; text-align: center; color: var(--muted);">
-      I am a data analyst focused on transforming raw data into meaningful business insights. My work combines SQL, Python, and BI tools to uncover patterns, optimize performance, and support data-driven decision making.
+    <p class="about-text">
+      Most insights fail not at analysis, but at communication. I work at the intersection of data analysis and business context to ensure insights translate into measurable impact. As a Data Science postgraduate with a background in market research, I leverage SQL, Python, and BI tools to solve real-world business problems.
     </p>
+  </section>
+
+  <section class="container reveal contact">
+    <img src="https://via.placeholder.com/100" alt="Ria Singh" class="profile-pic" />
+    <p style="color: var(--muted);">Open to Data Analyst opportunities</p>
   </section>
 
   <footer>
@@ -201,26 +315,22 @@
 
   <script>
     const reveals = document.querySelectorAll('.reveal');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     });
-
     reveals.forEach(r => observer.observe(r));
 
     function animateCounter(el) {
       const target = +el.getAttribute('data-target');
       const duration = 1200;
       const start = performance.now();
-
       function update(now) {
         const progress = Math.min((now - start) / duration, 1);
         el.textContent = Math.floor(progress * target).toLocaleString();
         if (progress < 1) requestAnimationFrame(update);
       }
-
       requestAnimationFrame(update);
     }
 
@@ -233,7 +343,6 @@
         }
       });
     });
-
     kpis.forEach(k => kpiObserver.observe(k));
   </script>
 
