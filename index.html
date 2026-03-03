@@ -3,314 +3,387 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ria Singh | Data Analyst</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Ria Singh | Data Insights Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0e1a2b;
-      --card: #15253d;
-      --accent: #4ea1ff;
-      --accent-soft: rgba(78,161,255,0.18);
-      --text: #e6eefc;
-      --muted: #9fb3d1;
+      --bg: #081221;
+      --bg-soft: #0c1c34;
+      --card: rgba(16, 32, 58, 0.88);
+      --accent: #52b3ff;
+      --accent-2: #7c8cff;
+      --text: #edf4ff;
+      --muted: #a7b7d6;
+      --line: rgba(130, 177, 255, 0.18);
+      --ok: #7dffbe;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html { scroll-behavior: smooth; }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at 20% 20%, #122742 0%, #0b1524 60%, #08101c 100%);
+      background: radial-gradient(circle at 10% 10%, #122d52 0%, #081221 52%, #050d18 100%);
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
     }
 
     .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
+      width: min(92%, 1120px);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .bg-chart {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.38;
+    }
+
+    .bg-chart svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .grid-line {
+      stroke: rgba(110, 170, 255, 0.18);
+      stroke-width: 1;
+    }
+
+    .chart-line {
+      fill: none;
+      stroke: #60bdff;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-dasharray: 6 10;
+      animation: dash 12s linear infinite;
+    }
+
+    @keyframes dash {
+      to { stroke-dashoffset: -320; }
     }
 
     header {
-      padding: 90px 0 70px;
+      padding: 95px 0 76px;
       text-align: center;
       position: relative;
     }
 
-    /* abstract glow */
     .hero-glow {
+      width: 470px;
+      height: 470px;
       position: absolute;
-      width: 420px;
-      height: 420px;
-      background: radial-gradient(circle, rgba(78,161,255,0.35) 0%, rgba(78,161,255,0) 70%);
-      top: -120px;
+      top: -160px;
       left: 50%;
       transform: translateX(-50%);
-      filter: blur(40px);
-      animation: floatGlow 6s ease-in-out infinite;
-      z-index: 0;
+      background: radial-gradient(circle, rgba(82,179,255,0.35) 0%, rgba(124,140,255,0.18) 35%, rgba(82,179,255,0) 72%);
+      filter: blur(24px);
+      animation: floatGlow 7s ease-in-out infinite;
+      z-index: 1;
     }
 
     @keyframes floatGlow {
-      0%,100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(20px); }
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(22px); }
     }
 
     h1 {
-      font-size: 2.9rem;
-      font-weight: 700;
-      margin-bottom: 12px;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      margin-bottom: 10px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
     }
 
     .subtitle {
       color: var(--muted);
-      font-size: 1.15rem;
-      margin-bottom: 30px;
+      font-size: 1.1rem;
+      max-width: 760px;
+      margin: 0 auto 30px;
       position: relative;
-      z-index: 1;
+      z-index: 2;
+    }
+
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
     }
 
     .btn {
       display: inline-block;
-      background: var(--accent);
-      color: #00122a;
-      padding: 13px 28px;
+      padding: 12px 22px;
       border-radius: 12px;
       font-weight: 600;
       text-decoration: none;
-      transition: all 0.25s ease;
-      position: relative;
-      z-index: 1;
+      border: 1px solid transparent;
+      transition: all .25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 28px rgba(78,161,255,0.35);
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #8fd4ff);
+      color: #061225;
     }
 
-    /* animated chart */
-    .chart-bg {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 520px;
-      opacity: 0.35;
-      z-index: 0;
+    .btn-secondary {
+      background: rgba(90, 140, 255, 0.12);
+      border-color: rgba(82, 179, 255, 0.35);
+      color: #d5e7ff;
     }
 
-    section { padding: 80px 0; }
+    .btn:hover { transform: translateY(-3px); }
+
+    section { padding: 70px 0; }
 
     .section-title {
-      font-size: 2rem;
-      margin-bottom: 34px;
       text-align: center;
+      margin-bottom: 26px;
+      font-size: clamp(1.5rem, 4vw, 2.15rem);
     }
 
-    .kpi-grid {
+    .section-intro {
+      color: var(--muted);
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto 36px;
+    }
+
+    .glass {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      backdrop-filter: blur(6px);
+    }
+
+    .kpi-grid,
+    .projects,
+    .education-grid,
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
     }
 
     .card {
-      background: var(--card);
-      padding: 26px;
-      border-radius: 18px;
-      transition: all 0.28s ease;
-      border: 1px solid rgba(255,255,255,0.04);
+      padding: 22px;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
     }
 
     .card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.45);
-      border-color: rgba(78,161,255,0.35);
+      transform: translateY(-8px);
+      border-color: rgba(82,179,255,0.6);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
     }
 
-    .kpi-value {
-      font-size: 2.1rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
+    .kpi-value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+    .kpi-label { color: var(--muted); font-size: 0.92rem; }
 
-    .kpi-label {
+    .project-title,
+    .edu-title,
+    .skills-title { font-size: 1.07rem; font-weight: 600; margin-bottom: 8px; }
+
+    .tags { color: var(--muted); margin-top: 8px; font-size: .86rem; }
+
+    .skills-list {
       color: var(--muted);
-      font-size: 0.92rem;
-    }
-
-    .projects {
+      list-style: none;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 26px;
+      gap: 7px;
     }
 
-    .project-title {
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
+    .skills-list li::before { content: '▹ '; color: var(--ok); }
 
-    .tags {
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: var(--muted);
-    }
-
-    /* skills */
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .skill-pill {
-      padding: 8px 14px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(78,161,255,0.35);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: #cfe4ff;
-    }
-
-    /* about */
-    .about-text {
-      max-width: 760px;
-      margin: auto;
+    .about-box {
+      padding: 28px;
+      max-width: 880px;
+      margin: 0 auto;
       text-align: center;
       color: var(--muted);
     }
 
-    /* contact photo */
     .contact {
       text-align: center;
+      padding: 34px 20px;
+      max-width: 860px;
+      margin: 0 auto;
     }
 
-    .profile-pic {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 14px;
-      border: 2px solid rgba(78,161,255,0.5);
-    }
+    .contact a { color: #cbe0ff; text-decoration: none; border-bottom: 1px dashed rgba(203,224,255,0.35); }
 
     footer {
       text-align: center;
-      padding: 40px 0;
       color: var(--muted);
-      font-size: 0.9rem;
+      padding: 34px 0 44px;
+      font-size: .9rem;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: all .75s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
+    @media (max-width: 640px) {
+      .card { padding: 18px; }
+      section { padding: 58px 0; }
     }
   </style>
 </head>
 <body>
+  <div class="bg-chart" aria-hidden="true">
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="none">
+      <path class="grid-line" d="M0 120 H1200 M0 240 H1200 M0 360 H1200 M0 480 H1200 M0 600 H1200" />
+      <path class="chart-line" d="M0 640 C140 560, 200 580, 320 500 C420 430, 500 450, 610 360 C740 255, 820 300, 920 210 C1010 130, 1080 160, 1200 70"/>
+      <path class="chart-line" style="stroke:#8f96ff; opacity:.72" d="M0 700 C140 620, 240 620, 340 540 C450 455, 570 500, 680 430 C760 385, 880 420, 980 350 C1100 275, 1140 290, 1200 240"/>
+    </svg>
+  </div>
 
   <header class="container">
     <div class="hero-glow"></div>
-
     <h1>Ria Singh</h1>
-    <p class="subtitle">Transforming Research into Data Driven Insights</p>
-    <a href="#projects" class="btn">View Projects</a>
-
-    <svg class="chart-bg" viewBox="0 0 500 120">
-      <polyline
-        fill="none"
-        stroke="#4ea1ff"
-        stroke-width="3"
-        points="0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40">
-        <animate attributeName="points" dur="6s" repeatCount="indefinite"
-          values="0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40;
-                  0,95 80,85 140,90 200,60 260,65 320,45 380,50 440,25 500,35;
-                  0,100 80,90 140,95 200,70 260,75 320,50 380,55 440,30 500,40" />
-      </polyline>
-    </svg>
+    <p class="subtitle">Transforming research into data-driven insights through analytics, storytelling, and practical business decisions.</p>
+    <div class="cta-group">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    </div>
   </header>
 
   <section class="container reveal">
     <h2 class="section-title">Key Impact</h2>
     <div class="kpi-grid">
-      <div class="card">
-        <div class="kpi-value" data-target="1000000">0</div>
-        <div class="kpi-label">Records Processed</div>
-      </div>
-      <div class="card">
-        <div class="kpi-value" data-target="4">0</div>
-        <div class="kpi-label">Dashboards Built</div>
-      </div>
-      <div class="card">
-        <div class="kpi-value" data-target="8">0</div>
-        <div class="kpi-label">Core Tools</div>
-      </div>
-      <div class="card">
+      <div class="card glass">
         <div class="kpi-value" data-target="6">0</div>
-        <div class="kpi-label">Analytics Projects</div>
+        <div class="kpi-label">Analytics Projects Delivered</div>
       </div>
+      <div class="card glass">
+        <div class="kpi-value" data-target="97">0</div>
+        <div class="kpi-label">Retention Risk Identified (%)</div>
+      </div>
+      <div class="card glass">
+        <div class="kpi-value" data-target="38">0</div>
+        <div class="kpi-label">Coupon Lift Validated (%)</div>
+      </div>
+      <div class="card glass">
+        <div class="kpi-value" data-target="186">0</div>
+        <div class="kpi-label">Campaign ROI Estimated (%)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container reveal">
+    <h2 class="section-title">About</h2>
+    <p class="section-intro">Most insights fail at communication. I work at the intersection of analysis and business context so insights turn into action.</p>
+    <div class="about-box glass">
+      I am a Data Science postgraduate student with experience in market research and business analytics. I use SQL, Python, and visualization tools to solve real problems across e-commerce, operations, and people analytics with a focus on clarity, measurable impact, and decision support.
+    </div>
+  </section>
+
+  <section class="container reveal">
+    <h2 class="section-title">Areas of Expertise</h2>
+    <div class="skills-grid">
+      <article class="card glass">
+        <h3 class="skills-title">Data Analysis & Visualization</h3>
+        <ul class="skills-list">
+          <li>SQL, Power BI, Excel, Tableau</li>
+          <li>Dashboard design and stakeholder reporting</li>
+        </ul>
+      </article>
+      <article class="card glass">
+        <h3 class="skills-title">Programming & Analytics</h3>
+        <ul class="skills-list">
+          <li>Python, EDA, Statistical Analysis</li>
+          <li>Hypothesis testing, A/B testing, experiment design</li>
+        </ul>
+      </article>
+      <article class="card glass">
+        <h3 class="skills-title">Machine Learning</h3>
+        <ul class="skills-list">
+          <li>Regression and classification models</li>
+          <li>Feature engineering, model evaluation, cross-validation</li>
+        </ul>
+      </article>
+      <article class="card glass">
+        <h3 class="skills-title">Cloud & Data Engineering</h3>
+        <ul class="skills-list">
+          <li>AWS: S3, Athena, Glue, QuickSight, IAM</li>
+          <li>Azure: Blob Storage, Data Factory, Synapse, Azure SQL</li>
+        </ul>
+      </article>
     </div>
   </section>
 
   <section id="projects" class="container reveal">
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects">
-      <div class="card">
-        <div class="project-title">Olist Marketplace Analysis</div>
-        <p>End-to-end funnel, delivery, and seller performance analysis.</p>
-        <div class="tags">SQL · Python · Power BI</div>
-      </div>
-      <div class="card">
-        <div class="project-title">Loan Default Risk Analysis</div>
-        <p>EDA and predictive modeling to identify high-risk applicants.</p>
-        <div class="tags">Python · ML · EDA</div>
-      </div>
-      <div class="card">
-        <div class="project-title">Fake News Detection</div>
-        <p>NLP model to classify and detect misleading information.</p>
-        <div class="tags">Python · NLP · ML</div>
-      </div>
+      <article class="card glass">
+        <h3 class="project-title">OLIST Marketplace Analysis</h3>
+        <p>Built a medallion data warehouse, performed RFM segmentation, surfaced a 97% retention crisis, and validated a coupon A/B test with 38.6% lift and 186% ROI.</p>
+        <div class="tags">SQL · Python · Power BI · A/B Testing</div>
+      </article>
+      <article class="card glass">
+        <h3 class="project-title">FMCG Sales Automation</h3>
+        <p>Automated daily distributor sales ingestion, cleaning, and reporting using Python, Power Query, Excel VBA, and Power BI with minimal manual effort.</p>
+        <div class="tags">Python · Excel VBA · Power BI</div>
+      </article>
+      <article class="card glass">
+        <h3 class="project-title">AWS Healthcare Operations ETL</h3>
+        <p>Designed a cloud-based ETL and analytics pipeline to monitor hospital operations and enable faster reporting through structured cloud datasets.</p>
+        <div class="tags">AWS Glue · Athena · S3 · QuickSight</div>
+      </article>
+      <article class="card glass">
+        <h3 class="project-title">Web Scraping Collection</h3>
+        <p>Built three scraping workflows using requests + BeautifulSoup and API ingestion via RapidAPI for reusable, structured data extraction.</p>
+        <div class="tags">Python · BeautifulSoup · API Integration</div>
+      </article>
+      <article class="card glass">
+        <h3 class="project-title">Fake News Detection</h3>
+        <p>Used Word2Vec and supervised learning to classify news as fake or true by detecting recurring patterns and textual features.</p>
+        <div class="tags">NLP · Word2Vec · Classification</div>
+      </article>
+      <article class="card glass">
+        <h3 class="project-title">Loan Default Risk Analysis</h3>
+        <p>Performed exploratory analysis to identify signals associated with repayment difficulty and support risk-aware lending decisions.</p>
+        <div class="tags">EDA · Risk Analytics · Python</div>
+      </article>
     </div>
   </section>
 
   <section class="container reveal">
-    <h2 class="section-title">Core Skills</h2>
-    <div class="skills">
-      <div class="skill-pill">SQL</div>
-      <div class="skill-pill">Python</div>
-      <div class="skill-pill">Power BI</div>
-      <div class="skill-pill">Excel</div>
-      <div class="skill-pill">Tableau</div>
-      <div class="skill-pill">Machine Learning</div>
-      <div class="skill-pill">Hypothesis Testing</div>
-      <div class="skill-pill">A/B Testing</div>
+    <h2 class="section-title">Education</h2>
+    <div class="education-grid">
+      <article class="card glass">
+        <h3 class="edu-title">MSc in Data Science</h3>
+        <p>Liverpool John Moores University, UK</p>
+        <div class="tags">Expected Graduation: 2026</div>
+      </article>
+      <article class="card glass">
+        <h3 class="edu-title">Executive PG Program, Data Science</h3>
+        <p>IIIT Bangalore</p>
+        <div class="tags">Expected Graduation: 2026</div>
+      </article>
+      <article class="card glass">
+        <h3 class="edu-title">B.Tech in Computer Science</h3>
+        <p>Lovely Professional University, India</p>
+        <div class="tags">Graduated: 2020</div>
+      </article>
     </div>
   </section>
 
-  <section class="container reveal">
-    <h2 class="section-title">About</h2>
-    <p class="about-text">
-      Most insights fail not at analysis, but at communication. I work at the intersection of data analysis and business context to ensure insights translate into measurable impact. As a Data Science postgraduate with a background in market research, I leverage SQL, Python, and BI tools to solve real-world business problems.
-    </p>
-  </section>
-
-  <section class="container reveal contact">
-    <img src="https://via.placeholder.com/100" alt="Ria Singh" class="profile-pic" />
-    <p style="color: var(--muted);">Open to Data Analyst opportunities</p>
+  <section id="contact" class="container reveal">
+    <div class="contact glass">
+      <h2 class="section-title" style="margin-bottom: 12px;">Let's Connect</h2>
+      <p style="color: var(--muted);">Open to Data Analyst opportunities and analytics collaborations.</p>
+      <p style="margin-top: 14px;">Email: <a href="mailto:singhria.0829@gmail.com">singhria.0829@gmail.com</a></p>
+      <p>Profiles: <a href="https://www.linkedin.com" target="_blank" rel="noreferrer noopener">LinkedIn</a> · <a href="https://github.com" target="_blank" rel="noreferrer noopener">GitHub</a></p>
+    </div>
   </section>
 
   <footer>
-    © 2026 Ria Singh · Data Analyst Portfolio
+    © 2026 Ria Singh · Analytics Portfolio
   </footer>
 
   <script>
@@ -319,32 +392,34 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    });
-    reveals.forEach(r => observer.observe(r));
+    }, { threshold: 0.2 });
+    reveals.forEach(el => observer.observe(el));
 
     function animateCounter(el) {
-      const target = +el.getAttribute('data-target');
-      const duration = 1200;
+      const target = +el.dataset.target;
       const start = performance.now();
-      function update(now) {
+      const duration = 1400;
+
+      function tick(now) {
         const progress = Math.min((now - start) / duration, 1);
-        el.textContent = Math.floor(progress * target).toLocaleString();
-        if (progress < 1) requestAnimationFrame(update);
+        el.textContent = Math.floor(target * progress).toLocaleString();
+        if (progress < 1) requestAnimationFrame(tick);
       }
-      requestAnimationFrame(update);
+
+      requestAnimationFrame(tick);
     }
 
     const kpis = document.querySelectorAll('.kpi-value');
-    const kpiObserver = new IntersectionObserver(entries => {
+    const kpiObs = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           animateCounter(entry.target);
-          kpiObserver.unobserve(entry.target);
+          kpiObs.unobserve(entry.target);
         }
       });
-    });
-    kpis.forEach(k => kpiObserver.observe(k));
-  </script>
+    }, { threshold: 0.4 });
 
+    kpis.forEach(item => kpiObs.observe(item));
+  </script>
 </body>
 </html>
