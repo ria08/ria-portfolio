@@ -11,7 +11,8 @@
       --bg-soft: #0c1c34;
       --card: rgba(16, 32, 58, 0.88);
       --accent: #52b3ff;
-      --accent-2: #7c8cff;
+      --accent-2: #b38cff;
+      --accent-3: #ff8da1;
       --text: #edf4ff;
       --muted: #a7b7d6;
       --line: rgba(130, 177, 255, 0.18);
@@ -70,9 +71,17 @@
 
     header {
       padding: 95px 0 76px;
-      text-align: center;
       position: relative;
     }
+
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .hero-copy { text-align: left; }
 
     .hero-glow {
       width: 470px;
@@ -138,6 +147,12 @@
       color: #d5e7ff;
     }
 
+    .btn-tertiary {
+      background: linear-gradient(135deg, rgba(255,141,161,0.25), rgba(179,140,255,0.2));
+      border-color: rgba(255,141,161,0.45);
+      color: #ffe3eb;
+    }
+
     .btn:hover { transform: translateY(-3px); }
 
     section { padding: 70px 0; }
@@ -163,11 +178,16 @@
     }
 
     .kpi-grid,
-    .projects,
     .education-grid,
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
     }
 
@@ -189,6 +209,32 @@
     .edu-title,
     .skills-title { font-size: 1.07rem; font-weight: 600; margin-bottom: 8px; }
 
+    .project-image {
+      width: 100%;
+      height: 185px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(130, 177, 255, 0.22);
+      margin-bottom: 14px;
+    }
+
+    .project-actions { margin-top: 15px; }
+
+    .project-btn {
+      display: inline-block;
+      text-decoration: none;
+      border: 1px solid rgba(255, 141, 161, 0.42);
+      color: #ffe7ee;
+      padding: 8px 14px;
+      border-radius: 10px;
+      font-size: .86rem;
+      font-weight: 600;
+      background: rgba(255, 141, 161, 0.12);
+      transition: transform .2s ease;
+    }
+
+    .project-btn:hover { transform: translateY(-2px); }
+
     .tags { color: var(--muted); margin-top: 8px; font-size: .86rem; }
 
     .skills-list {
@@ -206,6 +252,117 @@
       margin: 0 auto;
       text-align: center;
       color: var(--muted);
+    }
+
+    .section-accent { position: relative; overflow: hidden; }
+    .section-accent::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 15% 15%, rgba(82, 179, 255, 0.09), transparent 42%), radial-gradient(circle at 85% 78%, rgba(255, 141, 161, 0.08), transparent 36%);
+      z-index: -1;
+      animation: pulseSection 9s ease-in-out infinite;
+    }
+
+    @keyframes pulseSection {
+      0%,100% { opacity: .55; }
+      50% { opacity: 1; }
+    }
+
+    .hero-analyst {
+      min-height: 270px;
+      border-radius: 18px;
+      border: 1px solid rgba(130,177,255,0.28);
+      background: linear-gradient(165deg, rgba(32, 64, 115, .6), rgba(21, 35, 64, .85));
+      position: relative;
+      overflow: hidden;
+      animation: analystBob 5s ease-in-out infinite;
+    }
+
+    .hero-analyst::before,
+    .hero-analyst::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .hero-analyst::before {
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle, rgba(255,141,161,.8), rgba(255,141,161,0));
+      top: 12%;
+      right: 10%;
+    }
+
+    .hero-analyst::after {
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(82,179,255,.72), rgba(82,179,255,0));
+      bottom: -15px;
+      left: -15px;
+    }
+
+    .analyst-desk {
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      bottom: 18%;
+      height: 15px;
+      border-radius: 10px;
+      background: rgba(123, 175, 255, .45);
+    }
+
+    .analyst-screen {
+      position: absolute;
+      width: 54%;
+      height: 32%;
+      left: 22%;
+      top: 24%;
+      border-radius: 12px;
+      border: 2px solid rgba(130, 177, 255, .6);
+      background: linear-gradient(130deg, rgba(82,179,255,.4), rgba(179,140,255,.26));
+    }
+
+    .analyst-screen .bars {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      right: 16px;
+      height: 50%;
+      display: flex;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .analyst-screen .bars span {
+      flex: 1;
+      border-radius: 5px 5px 2px 2px;
+      background: linear-gradient(180deg, #9eddff, #5ea8ff);
+      animation: chartDance 2.8s ease-in-out infinite;
+    }
+
+    .analyst-screen .bars span:nth-child(2) { animation-delay: .2s; }
+    .analyst-screen .bars span:nth-child(3) { animation-delay: .4s; }
+    .analyst-screen .bars span:nth-child(4) { animation-delay: .6s; }
+
+    @keyframes chartDance {
+      0%,100% { height: 24%; }
+      50% { height: 100%; }
+    }
+
+    @keyframes analystBob {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .connect-face {
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(130,177,255,.42);
+      margin: 0 auto 10px;
+      display: block;
     }
 
     .contact {
@@ -231,6 +388,16 @@
       .card { padding: 18px; }
       section { padding: 58px 0; }
     }
+
+    @media (max-width: 1000px) {
+      .hero-layout { grid-template-columns: 1fr; }
+      .hero-copy { text-align: center; }
+      .projects { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 700px) {
+      .projects { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -244,15 +411,26 @@
 
   <header class="container">
     <div class="hero-glow"></div>
-    <h1>Ria Singh</h1>
-    <p class="subtitle">Transforming research into data-driven insights through analytics, storytelling, and practical business decisions.</p>
-    <div class="cta-group">
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-      <a href="#contact" class="btn btn-secondary">Get in Touch</a>
+    <div class="hero-layout">
+      <div class="hero-copy">
+        <h1>Ria Singh</h1>
+        <p class="subtitle">Transforming research into data-driven insights through analytics, storytelling, and practical business decisions.</p>
+        <div class="cta-group">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://www.linkedin.com/in/riainsightspro/" target="_blank" rel="noreferrer noopener" class="btn btn-secondary">Get in Touch</a>
+          <a href="https://drive.google.com/file/d/1YTRaVYo3d7_iGy71GSNHhoJQKWr3Yima/view" target="_blank" rel="noreferrer noopener" class="btn btn-tertiary">View Resume</a>
+        </div>
+      </div>
+      <aside class="hero-analyst" aria-label="Animated analyst illustration">
+        <div class="analyst-screen">
+          <div class="bars"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div class="analyst-desk"></div>
+      </aside>
     </div>
   </header>
 
-  <section class="container reveal">
+  <section class="container reveal section-accent">
     <h2 class="section-title">Key Impact</h2>
     <div class="kpi-grid">
       <div class="card glass">
@@ -274,7 +452,7 @@
     </div>
   </section>
 
-  <section class="container reveal">
+  <section class="container reveal section-accent">
     <h2 class="section-title">About</h2>
     <p class="section-intro">Most insights fail at communication. I work at the intersection of analysis and business context so insights turn into action.</p>
     <div class="about-box glass">
@@ -282,7 +460,7 @@
     </div>
   </section>
 
-  <section class="container reveal">
+  <section class="container reveal section-accent">
     <h2 class="section-title">Areas of Expertise</h2>
     <div class="skills-grid">
       <article class="card glass">
@@ -316,43 +494,55 @@
     </div>
   </section>
 
-  <section id="projects" class="container reveal">
+  <section id="projects" class="container reveal section-accent">
     <h2 class="section-title">Featured Projects</h2>
     <div class="projects">
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/nsplsh_c419383115004fa483025d9198cd14b2~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Hartono%20Creative%20Studio.jpg" alt="OLIST marketplace shelf image" loading="lazy" />
         <h3 class="project-title">OLIST Marketplace Analysis</h3>
         <p>Built a medallion data warehouse, performed RFM segmentation, surfaced a 97% retention crisis, and validated a coupon A/B test with 38.6% lift and 186% ROI.</p>
         <div class="tags">SQL · Python · Power BI · A/B Testing</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/OLIST-Marketplace-Analysis" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/11062b_2c72a846c86f43d2b6de95db2f33e652~mv2.jpg/v1/fill/w_331,h_220,fp_0.68_0.53,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Japanese%20Money.jpg" alt="FMCG sales money image" loading="lazy" />
         <h3 class="project-title">FMCG Sales Automation</h3>
         <p>Automated daily distributor sales ingestion, cleaning, and reporting using Python, Power Query, Excel VBA, and Power BI with minimal manual effort.</p>
         <div class="tags">Python · Excel VBA · Power BI</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/c8ea68_0f0658c533774a8d9a0f87376c99049a~mv2.webp/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/architecture.webp" alt="AWS healthcare ETL architecture" loading="lazy" />
         <h3 class="project-title">AWS Healthcare Operations ETL</h3>
         <p>Designed a cloud-based ETL and analytics pipeline to monitor hospital operations and enable faster reporting through structured cloud datasets.</p>
         <div class="tags">AWS Glue · Athena · S3 · QuickSight</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/Healthcare-Operations-Analytics-on-AWS-End-to-End-ETL-Pipeline-" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/11062b_9fe08d29e6424172b77e981fe0d037f2~mv2.png/v1/fill/w_331,h_220,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Creative%20Workspace%20Illustration.png" alt="Web scraping workspace illustration" loading="lazy" />
         <h3 class="project-title">Web Scraping Collection</h3>
         <p>Built three scraping workflows using requests + BeautifulSoup and API ingestion via RapidAPI for reusable, structured data extraction.</p>
         <div class="tags">Python · BeautifulSoup · API Integration</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/web-scraping-and-API" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/nsplsh_302ee4ef7619452fa85814de941058de~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Egor%20Komarov.jpg" alt="Fake news comparison scale" loading="lazy" />
         <h3 class="project-title">Fake News Detection</h3>
         <p>Used Word2Vec and supervised learning to classify news as fake or true by detecting recurring patterns and textual features.</p>
         <div class="tags">NLP · Word2Vec · Classification</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/Fake_News_Detection_RiaSingh" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
       <article class="card glass">
+        <img class="project-image" src="https://static.wixstatic.com/media/c8ea68_c80114070e374747ab5d75c852375dbc~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-lifeofnacchi-4124939.jpg" alt="Loan default risk glitch analysis" loading="lazy" />
         <h3 class="project-title">Loan Default Risk Analysis</h3>
         <p>Performed exploratory analysis to identify signals associated with repayment difficulty and support risk-aware lending decisions.</p>
         <div class="tags">EDA · Risk Analytics · Python</div>
+        <div class="project-actions"><a class="project-btn" href="https://github.com/ria08/loan_default_risk_analysis" target="_blank" rel="noreferrer noopener">Open Repo</a></div>
       </article>
     </div>
   </section>
 
-  <section class="container reveal">
+  <section class="container reveal section-accent">
     <h2 class="section-title">Education</h2>
     <div class="education-grid">
       <article class="card glass">
@@ -373,12 +563,13 @@
     </div>
   </section>
 
-  <section id="contact" class="container reveal">
+  <section id="contact" class="container reveal section-accent">
     <div class="contact glass">
+      <img class="connect-face" src="https://static.wixstatic.com/media/c8ea68_68ac6f4c162b455bacddd54030193891~mv2.jpg/v1/fill/w_209,h_209,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/1753683025862-modified.jpg" alt="Ria Singh portrait" loading="lazy" />
       <h2 class="section-title" style="margin-bottom: 12px;">Let's Connect</h2>
       <p style="color: var(--muted);">Open to Data Analyst opportunities and analytics collaborations.</p>
       <p style="margin-top: 14px;">Email: <a href="mailto:singhria.0829@gmail.com">singhria.0829@gmail.com</a></p>
-      <p>Profiles: <a href="https://www.linkedin.com" target="_blank" rel="noreferrer noopener">LinkedIn</a> · <a href="https://github.com" target="_blank" rel="noreferrer noopener">GitHub</a></p>
+      <p>Profiles: <a href="https://www.linkedin.com/in/riainsightspro/" target="_blank" rel="noreferrer noopener">LinkedIn</a> · <a href="https://github.com/ria08" target="_blank" rel="noreferrer noopener">GitHub</a></p>
     </div>
   </section>
 
