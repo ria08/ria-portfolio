@@ -186,7 +186,8 @@
 
     /* CONTACT */
     .contact-card { max-width:600px; text-align:center; padding:52px 40px; border-radius:22px; position:relative; overflow:hidden; }
-    .contact-card::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%,rgba(77,184,255,.12),transparent 60%); }
+    .contact-card::before { content:""; position:absolute; inset:0; background:radial-gradient(circle at 50% 0%,rgba(77,184,255,.12),transparent 60%); pointer-events:none; z-index:0; }
+    .contact-card > * { position:relative; z-index:1; }
     .contact-title { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3vw,2.4rem); margin-bottom:12px; }
     .contact-sub { color:var(--muted); max-width:380px; margin:0 auto 28px; font-size:.92rem; }
     .contact-links { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
