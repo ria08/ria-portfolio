@@ -79,7 +79,7 @@
     #home { min-height:100vh; display:flex; align-items:center; justify-content:center; }
 
     /* HERO */
-    .hero-inner { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; width:100%; max-width:860px; }
+    .hero-inner { position:relative; display:flex; flex-direction:column; align-items:center; text-align:center; width:100%; max-width:980px; padding-right:170px; }
     .hero-girl-float {
       position:absolute; right:-40px; top:50%;
       transform:translateY(-50%);
@@ -221,6 +221,8 @@
 
     /* RESPONSIVE */
     @media(max-width:1060px){
+      .hero-inner { padding-right:120px; }
+      .hero-girl-float { right:-18px; }
       .skills-row { grid-template-columns:repeat(2,1fr); }
       .projects-grid { grid-template-columns:repeat(2,1fr); }
       .kpi-grid { grid-template-columns:repeat(2,1fr); }
@@ -233,6 +235,7 @@
       .projects-grid{grid-template-columns:1fr;}
       .skills-row{grid-template-columns:1fr 1fr;}
       .blog-grid{grid-template-columns:1fr;}
+      .hero-inner{padding-right:0;}
       .hero-girl-float{display:none;}
     }
   </style>
@@ -370,8 +373,8 @@
       <div class="hero-badge">Available for opportunities</div>
       <h1>Turning data into<br><em>clear decisions</em></h1>
       <p class="hero-role">Data Professional</p>
-      <p class="hero-about">Data Science postgraduate with experience in market research, secondary analysis, and business analytics. I blend SQL, Python, and visualization tools with business context so insights are not just accurate, but actionable.</p>
-      <p class="hero-about">Across e-commerce, operations, and people analytics, I focus on clear storytelling, measurable impact, and decision support that teams can use immediately.</p>
+      <p class="hero-about">Data tells stories, but only if you know how to listen. I'm a data analyst who bridges the gap between raw numbers and boardroom decisions; building everything from bronze-to-gold data warehouses to executive dashboards that actually get used. My recent work identified a $11.7M retention opportunity hidden in 99K orders and validated a 186% ROI solution through rigorous A/B testing.</p>
+      <p class="hero-about">I specialize in the messy middle: taking fragmented data, questionable quality, and unclear business questions, then delivering clean insights, tested recommendations, and measurable impact. SQL, Python, Power BI, and statistical experimentation are my tools, but strategic thinking and clear communication are my differentiators. Let's connect if you value analysts who understand both the data and the business.</p>
       <div class="cta-group">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="https://www.linkedin.com/in/riainsightspro/" target="_blank" rel="noreferrer" class="btn btn-ghost">LinkedIn</a>
