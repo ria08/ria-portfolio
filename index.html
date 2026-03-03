@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ria Singh | Data Analyst</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1b2d;
+      --card: #16263d;
+      --accent: #4ea1ff;
+      --text: #e6eefc;
+      --muted: #9fb3d1;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #0b1626 0%, #0f1b2d 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    header {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: #00122a;
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(78,161,255,0.35);
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      padding: 24px;
+      border-radius: 16px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+    }
+
+    .kpi-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .kpi-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .project-title {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .tags {
+      margin-top: 10px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <header class="container">
+    <h1>Ria Singh</h1>
+    <p class="subtitle">Data Analyst | Turning data into business insights</p>
+    <a href="#projects" class="btn">View Projects</a>
+  </header>
+
+  <section class="container reveal">
+    <h2 class="section-title">Key Impact</h2>
+    <div class="kpi-grid">
+      <div class="card">
+        <div class="kpi-value" data-target="13220000">0</div>
+        <div class="kpi-label">Revenue Analyzed</div>
+      </div>
+      <div class="card">
+        <div class="kpi-value" data-target="100000">0</div>
+        <div class="kpi-label">Records Processed</div>
+      </div>
+      <div class="card">
+        <div class="kpi-value" data-target="6">0</div>
+        <div class="kpi-label">Dashboards Built</div>
+      </div>
+      <div class="card">
+        <div class="kpi-value" data-target="5">0</div>
+        <div class="kpi-label">Core Tools</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container reveal">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <div class="project-title">Brazil E-commerce Analysis</div>
+        <p>End-to-end funnel, delivery, and seller performance analysis.</p>
+        <div class="tags">SQL · Python · Power BI</div>
+      </div>
+      <div class="card">
+        <div class="project-title">Loan Default Risk Model</div>
+        <p>EDA and predictive modeling to identify high-risk applicants.</p>
+        <div class="tags">Python · ML · EDA</div>
+      </div>
+      <div class="card">
+        <div class="project-title">Housing Market Insights</div>
+        <p>Market trend dashboard analyzing pricing and inventory patterns.</p>
+        <div class="tags">SQL · Power BI</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container reveal">
+    <h2 class="section-title">About</h2>
+    <p style="max-width: 750px; margin: auto; text-align: center; color: var(--muted);">
+      I am a data analyst focused on transforming raw data into meaningful business insights. My work combines SQL, Python, and BI tools to uncover patterns, optimize performance, and support data-driven decision making.
+    </p>
+  </section>
+
+  <footer>
+    © 2026 Ria Singh · Data Analyst Portfolio
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    });
+
+    reveals.forEach(r => observer.observe(r));
+
+    function animateCounter(el) {
+      const target = +el.getAttribute('data-target');
+      const duration = 1200;
+      const start = performance.now();
+
+      function update(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        el.textContent = Math.floor(progress * target).toLocaleString();
+        if (progress < 1) requestAnimationFrame(update);
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const kpis = document.querySelectorAll('.kpi-value');
+    const kpiObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          kpiObserver.unobserve(entry.target);
+        }
+      });
+    });
+
+    kpis.forEach(k => kpiObserver.observe(k));
+  </script>
+
+</body>
+</html>
