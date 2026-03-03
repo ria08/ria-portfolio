@@ -172,19 +172,6 @@
     .proj-btn { display:inline-block; text-decoration:none; font-size:.74rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#f9a8d4; border:1px solid rgba(244,114,182,.35); background:rgba(244,114,182,.08); padding:6px 13px; border-radius:9px; transition:all .2s; }
     .proj-btn:hover { background:rgba(244,114,182,.2); transform:translateY(-2px); }
 
-    /* WORK EXPERIENCE */
-    .work-timeline { position:relative; padding-left:26px; max-width:660px; margin-top:28px; }
-    .work-timeline::before { content:""; position:absolute; left:0; top:10px; bottom:10px; width:2px; background:linear-gradient(180deg,var(--accent),var(--accent-2),var(--accent-3)); border-radius:2px; }
-    .work-item { position:relative; padding:20px 22px; border-radius:14px; margin-bottom:14px; transition:transform .28s, border-color .28s; }
-    .work-item:hover { transform:translateX(5px); border-color:rgba(77,184,255,.4); }
-    .work-item::before { content:""; position:absolute; left:-33px; top:22px; width:12px; height:12px; border-radius:50%; background:var(--accent); border:3px solid var(--bg); box-shadow:0 0 10px rgba(77,184,255,.6); }
-    .work-role { font-size:.98rem; font-weight:700; margin-bottom:3px; }
-    .work-company { color:var(--muted); font-size:.86rem; }
-    .work-period { display:inline-block; margin-top:8px; font-size:.7rem; font-weight:700; color:var(--ok); background:rgba(52,211,153,.1); border:1px solid rgba(52,211,153,.25); padding:2px 10px; border-radius:100px; }
-    .work-desc { color:var(--muted); font-size:.84rem; line-height:1.65; margin-top:8px; }
-    .work-note { color:var(--muted); font-size:.75rem; margin-top:6px; font-style:italic; opacity:.75; }
-    .work-tag { display:inline-block; margin-top:8px; margin-right:4px; font-size:.68rem; font-weight:700; letter-spacing:.05em; color:var(--accent); background:rgba(77,184,255,.1); border:1px solid rgba(77,184,255,.2); border-radius:100px; padding:2px 9px; }
-
     /* ABOUT */
 
     /* EDUCATION */
@@ -303,13 +290,12 @@
 
 <!-- SIDEBAR -->
 <nav class="sidebar">
-  <div class="sidebar-logo">Ria Singh<span>Data Analyst</span></div>
+  <div class="sidebar-logo">Ria Singh<span>Data Professional</span></div>
   <ul class="sidebar-nav">
     <li><a href="#home" class="active"><span class="nav-dot"></span>Home</a></li>
     <li><a href="#impact"><span class="nav-dot"></span>Impact</a></li>
     <li><a href="#skills"><span class="nav-dot"></span>Skills</a></li>
     <li><a href="#projects"><span class="nav-dot"></span>Projects</a></li>
-    <li><a href="#experience"><span class="nav-dot"></span>Experience</a></li>
     <li><a href="#education"><span class="nav-dot"></span>Education</a></li>
     <li><a href="#blogs"><span class="nav-dot"></span>Blogs</a></li>
     <li><a href="#contact"><span class="nav-dot"></span>Contact</a></li>
@@ -386,9 +372,9 @@
 
       <div class="hero-badge">Available for opportunities</div>
       <h1>Turning data into<br><em>clear decisions</em></h1>
-      <p class="hero-role">Data Analyst</p>
+      <p class="hero-role">Data Professional</p>
       <p class="hero-about">Data tells stories, but only if you know how to listen. I'm a data analyst who bridges the gap between raw numbers and boardroom decisions; building everything from bronze-to-gold data warehouses to executive dashboards that actually get used. My recent work identified a $11.7M retention opportunity hidden in 99K orders and validated a 186% ROI solution through rigorous A/B testing.</p>
-      <p class="hero-about">I specialize in the messy middle: taking fragmented data, questionable quality, and unclear business questions, then delivering clean insights, tested recommendations, and measurable impact. SQL, Python, Power BI, and statistical experimentation are my tools, but strategic thinking and clear communication are my differentiators. My background spans market research and data analytics, giving me stakeholder communication instincts that purely technical candidates often lack.</p>
+      <p class="hero-about">I specialize in the messy middle: taking fragmented data, questionable quality, and unclear business questions, then delivering clean insights, tested recommendations, and measurable impact. SQL, Python, Power BI, and statistical experimentation are my tools, but strategic thinking and clear communication are my differentiators. Let's connect if you value analysts who understand both the data and the business.</p>
       <div class="cta-group">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="https://www.linkedin.com/in/riainsightspro/" target="_blank" rel="noreferrer" class="btn btn-ghost">LinkedIn</a>
@@ -530,7 +516,7 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">SQL</span><span class="proj-tag">Python</span><span class="proj-tag">A/B Testing</span></div>
           <div class="proj-title">OLIST Marketplace Analysis</div>
-          <div class="proj-desc">A 97% one-time buyer retention crisis was hiding inside 99K orders. Built a full medallion warehouse (Bronze/Silver/Gold) in MySQL, segmented 93K customers into 5 RFM behavioural groups, and ran a statistically rigorous A/B test (p&lt;0.001) on a coupon intervention. Outcome: R$11.7M annual retention opportunity identified, 186% ROI confirmed, production rollout framework ready.</div>
+          <div class="proj-desc">Medallion data warehouse, RFM segmentation, 97% retention crisis surfaced, coupon A/B test with 38.6% lift and 186% ROI.</div>
           <a class="proj-btn" href="https://github.com/ria08/OLIST-Marketplace-Analysis" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
@@ -539,7 +525,7 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">Excel</span><span class="proj-tag">Power Query</span><span class="proj-tag">VBA</span><span class="proj-tag">Power BI</span></div>
           <div class="proj-title">FMCG Sales Automation</div>
-          <div class="proj-desc">A regional FMCG distributor was spending 80-115 minutes daily on manual sales consolidation. Built a fully automated pipeline: Python generates daily CSVs at 6:30AM via Windows Task Scheduler, Power Query ingests and cleans all files automatically, VBA writes audit logs and exports dated PDFs, and Power BI serves an executive dashboard. Result: ~30-40 hours/month of manual work eliminated with zero daily intervention needed.</div>
+          <div class="proj-desc">Automated daily distributor sales ingestion, cleaning, and reporting using Excel, Power Query, VBA, and Power BI.</div>
           <a class="proj-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
@@ -548,7 +534,7 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">AWS</span><span class="proj-tag">Glue</span><span class="proj-tag">Athena</span></div>
           <div class="proj-title">AWS Healthcare ETL Pipeline</div>
-          <div class="proj-desc">Raw hospital encounter data (~100K records) was inconsistent and unqueryable for operational decisions. Built a layered cloud ETL on AWS: S3 raw/cleaned/curated layers, Glue DataBrew for profiling and cleaning, Glue PySpark jobs for transformations, Athena for SQL validation, and QuickSight for dashboards. Delivered actionable KPIs on patient volume by department, average length of stay, and admission type distribution.</div>
+          <div class="proj-desc">Cloud-based ETL pipeline monitoring hospital operations and enabling faster reporting through structured cloud datasets.</div>
           <a class="proj-btn" href="https://github.com/ria08/Healthcare-Operations-Analytics-on-AWS-End-to-End-ETL-Pipeline-" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
@@ -557,7 +543,7 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">BeautifulSoup</span><span class="proj-tag">API</span></div>
           <div class="proj-title">Web Scraping Collection</div>
-          <div class="proj-desc">Three end-to-end data collection workflows covering different ingestion methods: Flipkart UHD TV listings (240 products across 10 pages, pagination and user-agent handling), Goodreads dystopian books (3,636 titles across 40 pages, nested HTML parsing), and Twitter/X tweet metadata via RapidAPI (83 tweets, 27-column structured output). Each notebook exports clean CSVs ready for downstream analysis.</div>
+          <div class="proj-desc">Three scraping workflows using requests + BeautifulSoup and API ingestion via RapidAPI for reusable structured data extraction.</div>
           <a class="proj-btn" href="https://github.com/ria08/web-scraping-and-API" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
@@ -566,7 +552,7 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">NLP</span><span class="proj-tag">Word2Vec</span><span class="proj-tag">ML</span></div>
           <div class="proj-title">Fake News Detection</div>
-          <div class="proj-desc">Built a fake vs real news binary classifier using a full NLP pipeline: text preprocessing (lowercasing, punctuation removal, stopword filtering, tokenisation), feature extraction, and supervised classification models evaluated on accuracy, precision, recall, F1-score, and confusion matrix. Demonstrates reproducible ML workflow from raw text ingestion to model evaluation with documented ethical caveats on probabilistic outputs.</div>
+          <div class="proj-desc">Word2Vec and supervised learning to classify fake vs true news by detecting recurring patterns and textual features.</div>
           <a class="proj-btn" href="https://github.com/ria08/Fake_News_Detection_RiaSingh" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
@@ -575,37 +561,9 @@
         <div class="proj-body">
           <div class="proj-tags"><span class="proj-tag">EDA</span><span class="proj-tag">Risk Analytics</span><span class="proj-tag">Python</span></div>
           <div class="proj-title">Loan Default Risk Analysis</div>
-          <div class="proj-desc">Lenders face two costly errors: rejecting creditworthy applicants or approving likely defaulters. Performed deep EDA on loan application data to surface patterns distinguishing clients with payment difficulties from on-time payers. Analysed four outcome categories (approved, cancelled, refused, unused offer) to identify risk signals and support more informed, data-driven lending decisions that reduce both false positive and false negative cost.</div>
+          <div class="proj-desc">EDA to identify signals associated with repayment difficulty and support risk-aware lending decisions.</div>
           <a class="proj-btn" href="https://github.com/ria08/loan_default_risk_analysis" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
-      </article>
-    </div>
-  </section>
-
-
-  <!-- WORK EXPERIENCE -->
-  <section class="page-section" id="experience">
-    <div class="reveal"><div class="sec-label">Career</div><h2 class="sec-title">Experience</h2></div>
-    <div class="work-timeline reveal">
-      <article class="work-item glass">
-        <div class="work-role">Research &amp; Content Analyst</div>
-        <div class="work-company">IMARC Services Pvt. Ltd.</div>
-        <div class="work-period">June 2023 &ndash; December 2024</div>
-        <p class="work-desc">Conducted secondary research across industry datasets to support market intelligence deliverables. Synthesised findings from multiple sources into structured content for client-facing reports. Communicated research outputs directly to clients, developing the stakeholder clarity and business context skills that now underpin my approach to analytics and insight delivery. Mentored junior team members on research workflows and quality standards.</p>
-        <p class="work-note">Left to pursue MSc in Data Science full-time (November 2024)</p>
-      </article>
-      <article class="work-item glass">
-        <div class="work-role">Industry Projects &mdash; Postgraduate</div>
-        <div class="work-company">Liverpool John Moores University &amp; IIIT Bangalore</div>
-        <div class="work-period">2024 &ndash; Present</div>
-        <p class="work-desc">Completed applied, industry-aligned projects as part of integrated MSc and Executive PG programs. Worked on real-world datasets across e-commerce analytics, cloud data engineering, FMCG sales automation, NLP classification, and financial risk analysis &mdash; building end-to-end solutions from raw data ingestion through to executive dashboards and statistical experimentation.</p>
-        <span class="work-tag">SQL</span><span class="work-tag">Python</span><span class="work-tag">Power BI</span><span class="work-tag">AWS</span><span class="work-tag">A/B Testing</span><span class="work-tag">NLP</span>
-      </article>
-      <article class="work-item glass">
-        <div class="work-role">Independent Study &amp; Contract Work</div>
-        <div class="work-company">Self-directed</div>
-        <div class="work-period">2020 &ndash; 2023</div>
-        <p class="work-desc">Prepared for competitive government examinations while undertaking contract-based project work. Built the independent learning discipline and problem-solving rigour that continues to drive my approach to data projects.</p>
       </article>
     </div>
   </section>
@@ -615,7 +573,7 @@
     <div class="reveal"><div class="sec-label">Background</div><h2 class="sec-title">Education</h2></div>
     <div class="edu-timeline reveal">
       <article class="edu-item glass"><div class="edu-degree">MSc in Data Science</div><div class="edu-school">Liverpool John Moores University, UK</div><div class="edu-year">Expected 2026</div></article>
-      <article class="edu-item glass"><div class="edu-degree">Executive PG Program, Data Science</div><div class="edu-school">IIIT Bangalore</div><div class="edu-year">Expected 2026</div><p style="color:var(--muted);font-size:.75rem;margin-top:8px;font-style:italic;">Both MSc and Executive PG programs are integrated and pursued simultaneously.</p></article>
+      <article class="edu-item glass"><div class="edu-degree">Executive PG Program, Data Science</div><div class="edu-school">IIIT Bangalore</div><div class="edu-year">Expected 2026</div></article>
       <article class="edu-item glass"><div class="edu-degree">B.Tech in Computer Science</div><div class="edu-school">Lovely Professional University, India</div><div class="edu-year">Graduated 2020</div></article>
     </div>
   </section>
@@ -652,7 +610,7 @@
       <div class="contact-title">Open to Data Analyst Roles</div>
       <p class="contact-sub">Looking for opportunities where data meets decision-making. Let's connect.</p>
       <div class="contact-links">
-        <a href="/cdn-cgi/l/email-protection#25564c4b424d574c440b151d171c654248444c490b464a48" class="cl cl-email">✉ <span class="__cf_email__" data-cfemail="22514b4c454a504b430c121a101b62454f434b4e0c414d4f">[email&#160;protected]</span></a>
+        <a href="mailto:singhria.0829@gmail.com" class="cl cl-email">✉ singhria.0829@gmail.com</a>
         <a href="https://www.linkedin.com/in/riainsightspro/" target="_blank" rel="noreferrer" class="cl cl-li">💼 LinkedIn</a>
         <a href="https://github.com/ria08/ria-portfolio" target="_blank" rel="noreferrer" class="cl cl-gh">⌥ GitHub</a>
       </div>
@@ -662,7 +620,7 @@
 
 </div><!-- end .main -->
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
   /* STARFIELD */
   (function(){
     const c=document.getElementById('stars'),ctx=c.getContext('2d');let stars=[];
@@ -690,4 +648,9 @@
   /* ACTIVE NAV */
   const secs=document.querySelectorAll('section[id]'),links=document.querySelectorAll('.sidebar-nav a');
   const nObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.c
+    entries.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.remove('active'));const a=document.querySelector(`.sidebar-nav a[href="#${e.target.id}"]`);if(a)a.classList.add('active');}});
+  },{threshold:.35,rootMargin:'-10% 0px -55% 0px'});
+  secs.forEach(s=>nObs.observe(s));
+</script>
+</body>
+</html>
