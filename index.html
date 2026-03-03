@@ -102,6 +102,19 @@
     h1 { font-family:'Playfair Display',serif; font-size:clamp(2.8rem,5vw,4.2rem); line-height:1.1; margin-bottom:14px; opacity:0; animation:fadeUp .9s ease .1s forwards; }
     h1 em { color:var(--accent); font-style:italic; }
     .hero-role { font-size:.9rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-bottom:18px; opacity:0; animation:fadeUp .9s ease .2s forwards; }
+    .hero-name-highlight {
+      margin-top:10px;
+      font-size:clamp(2.4rem,10vw,6.4rem);
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color:rgba(77,184,255,.14);
+      text-shadow:0 0 28px rgba(77,184,255,.2);
+      line-height:.95;
+      user-select:none;
+      opacity:0;
+      animation:fadeUp .9s ease .28s forwards;
+    }
     .hero-about {
       width:min(100%, 840px);
       color:var(--muted);
@@ -194,6 +207,31 @@
     .blog-desc { color:var(--muted); font-size:.83rem; margin-bottom:15px; line-height:1.6; }
     .blog-btn { display:inline-block; text-decoration:none; font-size:.76rem; font-weight:700; color:var(--accent-2); border:1px solid rgba(167,139,250,.3); background:rgba(167,139,250,.08); padding:6px 13px; border-radius:9px; transition:all .2s; }
     .blog-btn:hover { background:rgba(167,139,250,.2); transform:translateY(-2px); }
+    .blog-header-link {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      text-decoration:none;
+      color:inherit;
+      border-bottom:2px solid rgba(77,184,255,0.35);
+      padding-bottom:3px;
+      transition:border-color .2s, color .2s;
+    }
+    .blog-header-link:hover { border-color:#4db8ff; color:var(--accent); }
+    .blog-link-icon {
+      width:1.3em;
+      height:1.3em;
+      border:1px solid rgba(77,184,255,.35);
+      border-radius:50%;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.7em;
+      line-height:1;
+      transform:translateY(-1px);
+      transition:transform .2s ease, border-color .2s ease;
+    }
+    .blog-header-link:hover .blog-link-icon { transform:translate(2px,-1px); border-color:#4db8ff; }
 
     /* CONTACT */
     .contact-card { max-width:600px; text-align:center; padding:52px 40px; border-radius:22px; position:relative; overflow:hidden; }
@@ -238,6 +276,7 @@
       .blog-grid{grid-template-columns:1fr;}
       .hero-inner{padding-right:0;}
       .hero-girl-float{display:none;}
+      .hero-name-highlight { letter-spacing:.1em; }
     }
   </style>
 </head>
@@ -374,6 +413,7 @@
 
       <div class="hero-badge">Available for opportunities</div>
       <h1>Turning data into<br><em>clear decisions</em></h1>
+      <div class="hero-name-highlight">Ria Singh</div>
       <p class="hero-role">Data Analyst</p>
       <p class="hero-about">Data tells stories, but only if you know how to listen. I'm a data analyst who bridges the gap between raw numbers and boardroom decisions ;building everything from bronze-to-gold data warehouses to executive dashboards that actually get used. My recent work identified a R$11.7M retention opportunity hidden in 99K orders and validated a 186% ROI solution through rigorous A/B testing.</p>
       <p class="hero-about">I specialise in the messy middle: taking fragmented data, questionable quality, and unclear business questions, then delivering clean insights, tested recommendations, and measurable impact. My background spans market research and data analytics, giving me the stakeholder communication instincts that purely technical candidates often lack. I understand both the data and the business decisions it needs to drive.</p>
@@ -609,7 +649,7 @@
     <div class="reveal">
       <div class="sec-label">Writing</div>
       <h2 class="sec-title">
-        <a href="https://medium.com/@singhria.0829" target="_blank" rel="noreferrer" style="text-decoration:none;color:inherit;border-bottom:2px solid rgba(77,184,255,0.35);padding-bottom:3px;transition:border-color .2s;" onmouseover="this.style.borderColor='#4db8ff'" onmouseout="this.style.borderColor='rgba(77,184,255,0.35)'">View Blogs ↗</a>
+        <a href="https://medium.com/@singhria.0829" target="_blank" rel="noreferrer" class="blog-header-link">View Blogs <span class="blog-link-icon" aria-hidden="true">➜</span></a>
       </h2>
       <p class="sec-intro" style="margin-top:10px;">Quick explainers on modern analytics tools, platform updates, and practical implementation takeaways.</p>
     </div>
