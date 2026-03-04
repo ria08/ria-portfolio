@@ -1,34 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#edf4ff"/>
-      <stop offset="1" stop-color="#d8e8ff"/>
-    </linearGradient>
-  </defs>
-  <rect width="1200" height="675" fill="url(#bg)"/>
-  <text x="600" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#0f2958">End-to-End Healthcare ETL Pipeline on AWS</text>
-  <g font-family="Arial, sans-serif" fill="#fff" font-size="24" font-weight="700">
-    <rect x="50" y="130" width="170" height="70" rx="10" fill="#1565c0"/><text x="135" y="173" text-anchor="middle">Raw Data</text>
-    <rect x="230" y="130" width="220" height="70" rx="10" fill="#1976d2"/><text x="340" y="173" text-anchor="middle">Data Profiling &amp; Cleaning</text>
-    <rect x="460" y="130" width="180" height="70" rx="10" fill="#1e88e5"/><text x="550" y="173" text-anchor="middle">KPI Development</text>
-    <rect x="650" y="130" width="220" height="70" rx="10" fill="#1e88e5"/><text x="760" y="173" text-anchor="middle">Metadata &amp; Queries</text>
-    <rect x="880" y="130" width="260" height="70" rx="10" fill="#1565c0"/><text x="1010" y="173" text-anchor="middle">Interactive Dashboards</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="531" height="398" viewBox="0 0 531 398">
+  <rect width="531" height="398" fill="#ffffff"/>
+  <text x="265.5" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#0e3357">End-to-End Healthcare ETL Pipeline on AWS</text>
+  <line x1="40" y1="36" x2="491" y2="36" stroke="#6f8ca5" stroke-width="1"/>
+
+  <g font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="#fff">
+    <polygon points="20,60 90,60 103,78 90,96 20,96" fill="#0e73bf"/><text x="55" y="82" text-anchor="middle">Raw Data</text>
+    <polygon points="94,60 173,60 186,78 173,96 94,96" fill="#1a7fc8"/><text x="134" y="78" text-anchor="middle">Data Profiling</text><text x="134" y="90" text-anchor="middle">&amp; Cleaning</text>
+    <polygon points="177,60 248,60 261,78 248,96 177,96" fill="#1c89d5"/><text x="213" y="82" text-anchor="middle">KPI</text><text x="213" y="92" text-anchor="middle">Development</text>
+    <polygon points="252,60 338,60 351,78 338,96 252,96" fill="#1c89d5"/><text x="295" y="82" text-anchor="middle">KPI Development</text>
+    <polygon points="342,60 421,60 434,78 421,96 342,96" fill="#1a7fc8"/><text x="381" y="78" text-anchor="middle">Metadata &amp;</text><text x="381" y="90" text-anchor="middle">Queries</text>
+    <polygon points="425,60 503,60 516,78 503,96 425,96" fill="#0e73bf"/><text x="464" y="78" text-anchor="middle">Interactive</text><text x="464" y="90" text-anchor="middle">Dashboards</text>
   </g>
-  <g stroke="#4a7fc4" stroke-width="8" fill="none">
-    <path d="M220 165 H230"/><path d="M450 165 H460"/><path d="M640 165 H650"/><path d="M870 165 H880"/>
+
+  <rect x="22" y="110" width="487" height="228" fill="#f7fbff" stroke="#d4e3ef"/>
+  <line x1="103" y1="110" x2="103" y2="338" stroke="#dbe8f2"/><line x1="189" y1="110" x2="189" y2="338" stroke="#dbe8f2"/><line x1="296" y1="110" x2="296" y2="338" stroke="#dbe8f2"/><line x1="392" y1="110" x2="392" y2="338" stroke="#dbe8f2"/>
+
+  <g font-family="Arial, sans-serif" fill="#0b3561" font-size="12" font-weight="700">
+    <text x="63" y="136" text-anchor="middle">CSV</text>
+    <text x="146" y="136" text-anchor="middle">AWS</text>
+    <text x="243" y="136" text-anchor="middle">KPI</text>
+    <text x="344" y="136" text-anchor="middle">AWS Glue ETL Job</text>
+    <text x="442" y="136" text-anchor="middle">Register Tables</text>
+    <text x="463" y="172" text-anchor="middle">QuickSight</text>
   </g>
-  <g font-family="Arial, sans-serif" fill="#223a5e" font-size="28" font-weight="700">
-    <text x="140" y="300" text-anchor="middle">CSV Files</text>
-    <text x="340" y="300" text-anchor="middle">AWS S3 Raw Layer</text>
-    <text x="550" y="300" text-anchor="middle">AWS Glue ETL Job</text>
-    <text x="760" y="300" text-anchor="middle">Athena Tables</text>
-    <text x="1010" y="300" text-anchor="middle">QuickSight</text>
+
+  <g font-family="Arial, sans-serif" fill="#1f3f61" font-size="11">
+    <text x="35" y="200">Store Raw CSV Files</text>
+    <text x="114" y="187">Identify Issues</text>
+    <text x="114" y="204">Clean Data</text>
+    <text x="310" y="192">Avg Length of Stay</text>
+    <text x="310" y="210">Patient Volume by Type</text>
+    <text x="310" y="228">Dimensional Enrichment</text>
+    <text x="310" y="246">Category Bucketing</text>
+    <text x="402" y="202">Run SQL Queries</text>
+    <text x="449" y="202">Visualize Insights</text>
+    <text x="449" y="220">Monitor KPIs</text>
   </g>
-  <g font-family="Arial, sans-serif" fill="#2f4a73" font-size="22">
-    <text x="550" y="350" text-anchor="middle">Avg Length of Stay • Patient Volume • Enrichment</text>
-    <text x="760" y="390" text-anchor="middle">Register Tables • Run SQL Queries</text>
-    <text x="1010" y="430" text-anchor="middle">Visualize Insights • Monitor KPIs</text>
+
+  <g fill="none" stroke="#74b7e3" stroke-width="4">
+    <path d="M74 152h20"/><path d="M168 152h20"/><path d="M276 152h20"/><path d="M372 152h20"/>
   </g>
-  <rect x="170" y="560" width="860" height="55" rx="8" fill="#b6dbff"/>
-  <text x="600" y="597" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#164276">Cleaned &amp; Curated Data Lake on AWS</text>
+
+  <rect x="107" y="352" width="316" height="24" rx="4" fill="#d7ecfb"/>
+  <text x="265" y="369" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#124065">Cleaned &amp; Curated Data Lake on AWS</text>
 </svg>
