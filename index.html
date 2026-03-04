@@ -721,21 +721,32 @@
   /* KPI COUNTERS */
   function animCount(el){
     const target=Number(el.dataset.t)||0;
-    let current=0;
-    el.textContent=current;
+    const durationMs=1200;
+    const start=performance.now();
+    const showDecimal=target<10;
+
+    el.textContent='0';
 
     if(target<=0)return;
 
-    const intervalMs=45;
-    const timer=setInterval(()=>{
-      current+=1;
-      el.textContent=current;
+    function frame(now){
+      const elapsed=Math.min(now-start,durationMs);
+      const progress=elapsed/durationMs;
+      const eased=1-Math.pow(1-progress,3);
+      const current=target*eased;
 
-      if(current>=target){
-        clearInterval(timer);
-        el.textContent=target;
+      el.textContent=showDecimal
+        ? current.toFixed(1)
+        : Math.round(current).toLocaleString('en-US');
+
+      if(elapsed<durationMs){
+        requestAnimationFrame(frame);
+      }else{
+        el.textContent=target.toLocaleString('en-US');
       }
-    },intervalMs);
+    }
+
+    requestAnimationFrame(frame);
   }
   const kObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.kn').forEach(animCount);e.target.classList.add('vis');kObs.unobserve(e.target);}});
