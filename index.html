@@ -720,13 +720,26 @@
 
   /* KPI COUNTERS */
   function animCount(el){
-    const t=+el.dataset.t,dur=1500,start=performance.now();
-    const tick=now=>{const p=Math.min((now-start)/dur,1),e=1-Math.pow(1-p,3);el.textContent=Math.floor(t*e);if(p<1)requestAnimationFrame(tick);else el.textContent=t;};
-    requestAnimationFrame(tick);
+    const target=Number(el.dataset.t)||0;
+    let current=0;
+    el.textContent=current;
+
+    if(target<=0)return;
+
+    const intervalMs=45;
+    const timer=setInterval(()=>{
+      current+=1;
+      el.textContent=current;
+
+      if(current>=target){
+        clearInterval(timer);
+        el.textContent=target;
+      }
+    },intervalMs);
   }
   const kObs=new IntersectionObserver(entries=>{
     entries.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.kn').forEach(animCount);e.target.classList.add('vis');kObs.unobserve(e.target);}});
-  },{threshold:.3});
+  },{threshold:.18});
   document.querySelectorAll('.kpi-card').forEach(c=>kObs.observe(c));
 
   /* ACTIVE NAV */
