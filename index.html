@@ -586,48 +586,24 @@
       <article class="project-card glass">
         <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/c8ea68_c80114070e374747ab5d75c852375dbc~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-lifeofnacchi-4124939.jpg" alt="FMCG" loading="lazy"/></div>
         <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">Excel</span><span class="proj-tag">Power Query</span><span class="proj-tag">VBA</span><span class="proj-tag">Power BI</span></div>
+          <div class="proj-tags"><span class="proj-tag">Excel</span><span class="proj-tag">Power Query</span><span class="proj-tag">Python</span><span class="proj-tag">Automation</span></div>
           <div class="proj-title">FMCG Sales Automation</div>
-          <div class="proj-desc"><ul><li>A regional FMCG distributor was spending 80–115 minutes daily on manual sales consolidation and reporting. I built a fully automated pipeline where Python generates daily CSVs at 6:30AM via Windows Task Scheduler and Power Query ingests and cleans all files automatically.</li><li>VBA now writes audit logs and exports dated PDFs on demand, while Power BI serves a single-page executive dashboard. Result: ~30–40 hours/month of manual work eliminated with zero daily intervention needed.</li></ul></div>
+          <div class="proj-desc"><ul><li>I transformed a raw FMCG sales dataset into a fully automated reporting model that classifies stores as New / Existing / Lapsed based on recency and historical sales windows.</li><li>The output drives instant performance visibility by channel and geography while removing repetitive manual reporting steps, making weekly review cycles faster and more reliable.</li></ul></div>
           <a class="proj-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
       <article class="project-card glass">
-        <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/c8ea68_0f0658c533774a8d9a0f87376c99049a~mv2.webp/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/architecture.webp" alt="AWS" loading="lazy"/></div>
+        <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/c8ea68_76a265dc6e73414caf373dd8eb62e7f5~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-pixabay-63332.jpg" alt="AWS ETL" loading="lazy"/></div>
         <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">AWS S3</span><span class="proj-tag">Glue DataBrew</span><span class="proj-tag">Glue PySpark</span><span class="proj-tag">Athena</span><span class="proj-tag">QuickSight</span></div>
+          <div class="proj-tags"><span class="proj-tag">AWS S3</span><span class="proj-tag">Glue</span><span class="proj-tag">Athena</span><span class="proj-tag">ETL</span></div>
           <div class="proj-title">AWS Healthcare ETL Pipeline</div>
-          <div class="proj-desc"><ul><li>Raw hospital encounter data (~100K records) was inconsistent and unqueryable for operational decisions. I built a layered cloud ETL pipeline on AWS with S3 raw/cleaned/curated zones and Glue DataBrew for profiling and cleaning.</li><li>Glue PySpark jobs handled transformations and aggregations, Athena supported SQL validation, and QuickSight delivered stakeholder dashboards. The pipeline surfaced actionable KPIs on patient volume by department, average length of stay, and admission type distribution.</li></ul></div>
+          <div class="proj-desc"><ul><li>I built an end-to-end cloud ETL workflow for healthcare operations data using AWS S3, Glue Crawlers, Data Catalog, ETL jobs, and Athena query layers.</li><li>The architecture supports clean schema evolution and scalable analytics consumption, turning fragmented operational data into trusted reporting-ready datasets.</li></ul></div>
           <a class="proj-btn" href="https://github.com/ria08/Healthcare-Operations-Analytics-on-AWS-End-to-End-ETL-Pipeline-" target="_blank" rel="noreferrer">Open Repo</a>
         </div>
       </article>
-      <article class="project-card glass">
-        <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/11062b_2c72a846c86f43d2b6de95db2f33e652~mv2.jpg/v1/fill/w_331,h_220,fp_0.68_0.53,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Japanese%20Money.jpg" alt="Loan default" loading="lazy"/></div>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">Pandas</span><span class="proj-tag">EDA</span><span class="proj-tag">Risk Analytics</span></div>
-          <div class="proj-title">Loan Default Risk Analysis</div>
-          <div class="proj-desc"><ul><li>Lenders face two costly errors: rejecting creditworthy applicants or approving likely defaulters. I performed deep EDA on loan application data to surface patterns that distinguish clients with payment difficulties from on-time payers.</li><li>The analysis covered four outcome categories (approved, cancelled, refused, and unused offer) to identify risk signals across the funnel. Findings support more informed, data-driven lending decisions that reduce both false-positive and false-negative cost.</li></ul></div>
-          <a class="proj-btn" href="https://github.com/ria08/loan_default_risk_analysis" target="_blank" rel="noreferrer">Open Repo</a>
-        </div>
-      </article>
-      <article class="project-card glass">
-        <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/nsplsh_302ee4ef7619452fa85814de941058de~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Egor%20Komarov.jpg" alt="Scraping" loading="lazy"/></div>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">BeautifulSoup</span><span class="proj-tag">Requests</span><span class="proj-tag">RapidAPI</span></div>
-          <div class="proj-title">Web Scraping Collection</div>
-          <div class="proj-desc"><ul><li>This project combines three end-to-end data collection workflows using different ingestion methods: Flipkart UHD TV listings (240 products across 10 pages), Goodreads dystopian books (3,636 titles across 40 pages), and Twitter/X tweet metadata via RapidAPI (83 tweets with a 27-column structured output).</li><li>Across these pipelines I handled pagination, nested HTML parsing, user-agent strategy, and API extraction patterns. Each notebook exports clean CSV datasets that are ready for downstream analysis.</li></ul></div>
-          <a class="proj-btn" href="https://github.com/ria08/web-scraping-and-API" target="_blank" rel="noreferrer">Open Repo</a>
-        </div>
-      </article>
-      <article class="project-card glass">
-        <div class="proj-img-wrap"><img class="proj-img" src="https://static.wixstatic.com/media/nsplsh_c419383115004fa483025d9198cd14b2~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Hartono%20Creative%20Studio.jpg" alt="Fake news" loading="lazy"/></div>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">NLP</span><span class="proj-tag">Word2Vec</span><span class="proj-tag">Scikit-learn</span><span class="proj-tag">ML</span></div>
-          <div class="proj-title">Fake News Detection</div>
-          <div class="proj-desc"><ul><li>I built a fake-vs-real news binary classifier using a complete NLP workflow: text preprocessing (lowercasing, punctuation removal, stopword filtering, and tokenisation), feature extraction, and supervised model training.</li><li>Models were evaluated using accuracy, precision, recall, F1-score, and confusion matrix outputs to keep performance transparent. The project also documents ethical caveats around probabilistic predictions and misuse risk.</li></ul></div>
-          <a class="proj-btn" href="https://github.com/ria08/Fake_News_Detection_RiaSingh" target="_blank" rel="noreferrer">Open Repo</a>
-        </div>
-      </article>
+    </div>
+    <div class="reveal" style="margin-top:24px; text-align:center;">
+      <a class="proj-btn" href="projects.html">View All Projects</a>
     </div>
   </section>
 
