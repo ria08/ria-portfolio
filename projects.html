@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Projects | Ria Singh</title>
+  <style>
+    :root { --bg:#050711; --card:#101629; --line:rgba(148,163,184,.23); --text:#e6edf7; --muted:#93a4c2; --pink:#f472b6; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif; background:radial-gradient(circle at 20% 20%, #112047, #050711 60%); color:var(--text); }
+    .wrap { max-width:1200px; margin:0 auto; padding:48px 20px 70px; }
+    .top { display:flex; justify-content:space-between; align-items:center; gap:14px; margin-bottom:24px; flex-wrap:wrap; }
+    h1 { margin:0; font-size:2rem; }
+    .back,.proj-btn { display:inline-block; text-decoration:none; font-size:.76rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#f9a8d4; border:1px solid rgba(244,114,182,.35); background:rgba(244,114,182,.08); padding:8px 14px; border-radius:10px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+    .card { background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid var(--line); border-radius:16px; overflow:hidden; }
+    .img { width:100%; height:180px; object-fit:cover; display:block; }
+    .body { padding:14px; }
+    .tags{display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px;}
+    .tag{font-size:.62rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:#9fb6d6; border:1px solid rgba(159,182,214,.35); border-radius:999px; padding:4px 8px;}
+    .title{font-size:1rem; font-weight:700; margin-bottom:6px;}
+    .desc{color:var(--muted); font-size:.85rem; line-height:1.55; min-height:120px;}
+    @media (max-width:960px){ .grid{grid-template-columns:repeat(2,1fr);} }
+    @media (max-width:680px){ .grid{grid-template-columns:1fr;} .img{height:210px;} }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="top">
+      <h1>All Projects</h1>
+      <a class="back" href="index.html#projects">← Back to Portfolio</a>
+    </div>
+
+    <section class="grid">
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/11062b_9fe08d29e6424172b77e981fe0d037f2~mv2.png/v1/fill/w_331,h_220,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Creative%20Workspace%20Illustration.png" alt="OLIST" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span></div><div class="title">OLIST Marketplace Analysis</div><div class="desc">Built a MySQL medallion warehouse and RFM segments for 99K marketplace orders, then validated a coupon intervention with A/B testing.</div><a class="proj-btn" href="https://github.com/ria08/OLIST-Marketplace-Analysis" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/c8ea68_c80114070e374747ab5d75c852375dbc~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-lifeofnacchi-4124939.jpg" alt="FMCG" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">Excel</span><span class="tag">Power Query</span><span class="tag">Automation</span></div><div class="title">FMCG Sales Automation</div><div class="desc">Automated FMCG sales reporting and store classification logic (New/Existing/Lapsed) to reduce recurring manual analysis work.</div><a class="proj-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/c8ea68_76a265dc6e73414caf373dd8eb62e7f5~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-pixabay-63332.jpg" alt="AWS ETL" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">AWS</span><span class="tag">Glue</span><span class="tag">Athena</span></div><div class="title">AWS Healthcare ETL Pipeline</div><div class="desc">Designed an end-to-end healthcare operations data pipeline on AWS using S3, crawlers, ETL jobs, and Athena-ready datasets.</div><a class="proj-btn" href="https://github.com/ria08/Healthcare-Operations-Analytics-on-AWS-End-to-End-ETL-Pipeline-" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/c8ea68_eab3316b4f5d4738a5cb27e5ef4e192f~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-monstera-production-7792834.jpg" alt="Loan default risk" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">ML</span><span class="tag">Risk</span><span class="tag">Python</span></div><div class="title">Loan Default Risk Analysis</div><div class="desc">Built a borrower risk classification workflow with feature engineering, model comparison, and default-focused business interpretation.</div><a class="proj-btn" href="https://github.com/ria08/loan_default_risk_analysis" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/c8ea68_40d0f0f6fc83492f96672b9af2b0709d~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/pexels-lukas-669615.jpg" alt="Web scraping" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">Scraping</span><span class="tag">API</span><span class="tag">Python</span></div><div class="title">Web Scraping Collection</div><div class="desc">Combined multi-source scraping and API extraction notebooks to collect product, books, and social metadata in analysis-ready CSV outputs.</div><a class="proj-btn" href="https://github.com/ria08/web-scraping-and-API" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+      <article class="card">
+        <img class="img" src="https://static.wixstatic.com/media/c8ea68_9c4fbf9c730946498f5b6f95efcd14b2~mv2.jpg/v1/fill/w_331,h_220,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Image%20by%20Hartono%20Creative%20Studio.jpg" alt="Fake news" loading="lazy"/>
+        <div class="body"><div class="tags"><span class="tag">NLP</span><span class="tag">Word2Vec</span><span class="tag">Scikit-learn</span></div><div class="title">Fake News Detection</div><div class="desc">Implemented an NLP classification pipeline with preprocessing, vectorization, and model evaluation across standard ML quality metrics.</div><a class="proj-btn" href="https://github.com/ria08/Fake_News_Detection_RiaSingh" target="_blank" rel="noreferrer">Open Repo</a></div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
