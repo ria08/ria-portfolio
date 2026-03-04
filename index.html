@@ -158,8 +158,8 @@
     .kpi-card.vis .kpi-bar { transform:scaleX(1); }
 
     /* SKILLS ROW */
-    .skills-row { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:28px; }
-    .skill-card { padding:24px 18px 22px; border-radius:16px; transition:transform .28s, border-color .28s; position:relative; overflow:hidden; }
+    .skills-row { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; margin-top:28px; }
+    .skill-card { padding:18px 14px 16px; border-radius:16px; transition:transform .28s, border-color .28s; position:relative; overflow:hidden; }
     .skill-card:hover { transform:translateY(-6px); border-color:rgba(167,139,250,.38); }
     .skill-anim { width:40px; height:40px; margin-bottom:14px; }
     .skill-name { font-size:.9rem; font-weight:700; margin-bottom:7px; }
@@ -517,6 +517,20 @@
         <div class="skill-name">Programming & Analytics</div>
         <div class="skill-desc">Statistical analysis, EDA, hypothesis testing, A/B experiments, reproducible code.</div>
         <div class="pill-row"><span class="pill v">Python</span><span class="pill v">Pandas</span><span class="pill v">EDA</span><span class="pill v">A/B Testing</span></div>
+      </div>
+      <div class="skill-card glass">
+        <div class="skill-anim">
+          <svg viewBox="0 0 40 40" width="40" height="40">
+            <rect x="4" y="8" width="32" height="24" rx="4" fill="none" stroke="#4db8ff" stroke-width="1.8"/>
+            <path d="M8 26 L14 20 L19 23 L27 14 L32 18" fill="none" stroke="#34d399" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="14" cy="20" r="1.8" fill="#a78bfa"/>
+            <circle cx="19" cy="23" r="1.8" fill="#a78bfa" opacity=".8"/>
+            <circle cx="27" cy="14" r="1.8" fill="#f472b6"/>
+          </svg>
+        </div>
+        <div class="skill-name">Business Analytics</div>
+        <div class="skill-desc">Decision-focused analysis across customer behavior, retention, and experimentation.</div>
+        <div class="pill-row"><span class="pill">Funnel Analysis</span><span class="pill">Customer Segmentation</span><span class="pill">Retention Analysis</span><span class="pill">Experiment Design</span><span class="pill">KPI Tracking</span></div>
       </div>
       <div class="skill-card glass">
         <div class="skill-anim">
