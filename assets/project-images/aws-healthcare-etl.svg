@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#edf4ff"/>
+      <stop offset="1" stop-color="#d8e8ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <text x="600" y="80" text-anchor="middle" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#0f2958">End-to-End Healthcare ETL Pipeline on AWS</text>
+  <g font-family="Arial, sans-serif" fill="#fff" font-size="24" font-weight="700">
+    <rect x="50" y="130" width="170" height="70" rx="10" fill="#1565c0"/><text x="135" y="173" text-anchor="middle">Raw Data</text>
+    <rect x="230" y="130" width="220" height="70" rx="10" fill="#1976d2"/><text x="340" y="173" text-anchor="middle">Data Profiling &amp; Cleaning</text>
+    <rect x="460" y="130" width="180" height="70" rx="10" fill="#1e88e5"/><text x="550" y="173" text-anchor="middle">KPI Development</text>
+    <rect x="650" y="130" width="220" height="70" rx="10" fill="#1e88e5"/><text x="760" y="173" text-anchor="middle">Metadata &amp; Queries</text>
+    <rect x="880" y="130" width="260" height="70" rx="10" fill="#1565c0"/><text x="1010" y="173" text-anchor="middle">Interactive Dashboards</text>
+  </g>
+  <g stroke="#4a7fc4" stroke-width="8" fill="none">
+    <path d="M220 165 H230"/><path d="M450 165 H460"/><path d="M640 165 H650"/><path d="M870 165 H880"/>
+  </g>
+  <g font-family="Arial, sans-serif" fill="#223a5e" font-size="28" font-weight="700">
+    <text x="140" y="300" text-anchor="middle">CSV Files</text>
+    <text x="340" y="300" text-anchor="middle">AWS S3 Raw Layer</text>
+    <text x="550" y="300" text-anchor="middle">AWS Glue ETL Job</text>
+    <text x="760" y="300" text-anchor="middle">Athena Tables</text>
+    <text x="1010" y="300" text-anchor="middle">QuickSight</text>
+  </g>
+  <g font-family="Arial, sans-serif" fill="#2f4a73" font-size="22">
+    <text x="550" y="350" text-anchor="middle">Avg Length of Stay • Patient Volume • Enrichment</text>
+    <text x="760" y="390" text-anchor="middle">Register Tables • Run SQL Queries</text>
+    <text x="1010" y="430" text-anchor="middle">Visualize Insights • Monitor KPIs</text>
+  </g>
+  <rect x="170" y="560" width="860" height="55" rx="8" fill="#b6dbff"/>
+  <text x="600" y="597" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#164276">Cleaned &amp; Curated Data Lake on AWS</text>
+</svg>

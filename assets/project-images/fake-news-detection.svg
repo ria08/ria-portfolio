@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#9fdaf0"/>
+  <rect x="250" y="420" width="700" height="26" rx="12" fill="#3e5f74"/>
+  <rect x="565" y="300" width="70" height="130" rx="14" fill="#536b80"/>
+  <circle cx="600" cy="340" r="62" fill="#ecf2f7" stroke="#3e5f74" stroke-width="12"/>
+  <polygon points="600,322 622,340 600,358 578,340" fill="#3e5f74"/>
+  <polygon points="300,332 575,300 575,330 300,360" fill="#4f6f82"/>
+  <polygon points="625,330 900,300 900,360 625,390" fill="#4f6f82"/>
+  <rect x="165" y="245" width="230" height="120" rx="18" fill="#70b24f"/>
+  <rect x="805" y="245" width="230" height="120" rx="18" fill="#d64e4e"/>
+  <text x="280" y="300" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="52" fill="#d6ffd0">TRUTH</text>
+  <text x="280" y="345" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="52" fill="#d6ffd0">FACTS</text>
+  <text x="920" y="312" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="56" fill="#ffd3d3">FAKE</text>
+  <text x="920" y="358" text-anchor="middle" font-family="Arial Black, sans-serif" font-size="56" fill="#ffd3d3">NEWS</text>
+</svg>
