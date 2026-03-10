@@ -17,11 +17,11 @@
       --line: rgba(100,160,255,0.15);
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    html, body { height:100%; }
+    html, body { min-height:100%; }
     body {
       font-family:'DM Sans',sans-serif;
       background:var(--bg); color:var(--text);
-      display:flex; flex-direction:column;
+      min-height:100vh;
     }
     canvas#stars { position:fixed; inset:0; z-index:0; pointer-events:none; }
 
@@ -40,7 +40,6 @@
 
     /* ── BODY ── */
     .body-row {
-      flex:1;
       position:relative;
       z-index:2;
       max-width:980px;
@@ -50,7 +49,6 @@
       display:flex;
       flex-direction:column;
       gap:16px;
-      overflow-y:auto;
     }
 
     /* ══ LEFT ══ */
@@ -62,7 +60,7 @@
     }
     .left-heading { font-family:'Playfair Display',serif; font-size:1.58rem; line-height:1.24; margin:0; text-align:center; white-space:normal; font-weight:700; }
     .left-heading em { color:var(--accent); font-style:italic; }
-    .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:0; }
+    .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:12px; }
     .left-problem strong { color:var(--muted); font-weight:400; }
     .divider { height:1px; background:var(--line); margin:16px 0; }
     .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; text-align:center; }
@@ -301,7 +299,8 @@
     <div class="left">
       <p class="left-problem">
         A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single working day.
-        <br><br>
+      </p>
+      <p class="left-problem">
         <strong>This pipeline eliminates all of it.</strong> Python generates fresh data at 6:30 AM via Task Scheduler. Power Query ingests and cleans every new file automatically. Three VBA macros handle the rest. Power BI surfaces everything in one executive dashboard. <strong>Zero manual work after setup — saving 30–40 hours a month.</strong>
       </p>
       <div class="divider"></div>
