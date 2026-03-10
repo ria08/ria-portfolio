@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -228,6 +229,22 @@
     .cta-big-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 22px; border-radius:9px; font-size:.76rem; font-weight:700; text-decoration:none; background:var(--accent); color:#060d1a; transition:all .22s; }
     .cta-big-btn:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
     .cta-big-btn svg { width:13px; height:13px; }
+
+    /* IMAGE CAROUSEL */
+    #deck .slide img {
+      width:100%; height:100%;
+      object-fit:contain;
+      display:block;
+      border-radius:10px;
+    }
+    #deck .slide {
+      position:absolute; inset:0;
+      opacity:0; transition:opacity .5s ease;
+      pointer-events:none;
+      background:#060d1a;
+      border-radius:10px;
+    }
+    #deck .slide.active { opacity:1; pointer-events:all; }
   </style>
 </head>
 <body>
@@ -278,16 +295,33 @@
     <div class="right">
       <div class="slide-label">Project Walkthrough</div>
 
-            <div class="deck-wrap">
-        <iframe
-          src="https://drive.google.com/file/d/1sWU06S7Y18qrpuFlICAU0WbJuMoESAAj/preview"
-          frameborder="0"
-          allowfullscreen
-          style="width:100%;height:100%;border:none;border-radius:14px;"
-        ></iframe>
+                  <div class="deck-wrap" id="deck">
+        <div class="slide active"><img src="assets/fmcg/1_A-sales-automation-project-that-eliminated-80-115-minutes-of-daily-manual-work-replacing-a-repetitiv.png" alt="Slide 1"></div>
+        <div class="slide"><img src="assets/fmcg/2_Every-Morning-Same-Manual-Grind-Every-Single-Day.png" alt="Slide 2"></div>
+        <div class="slide"><img src="assets/fmcg/3_One-Automated-Chain-Zero-Manual-Steps.png" alt="Slide 3"></div>
+        <div class="slide"><img src="assets/fmcg/4_A-New-File-Every-Morning-Automatically.png" alt="Slide 4"></div>
+        <div class="slide"><img src="assets/fmcg/5_15-Cleaning-Steps-Written-Once-Run-Forever.png" alt="Slide 5"></div>
+        <div class="slide"><img src="assets/fmcg/6_indian-rupee166-Crore-8353-Orders-Zero-Manual-Updates.png" alt="Slide 6"></div>
+        <div class="slide"><img src="assets/fmcg/7_Every-Run-On-Record-Automatically.png" alt="Slide 7"></div>
+        <div class="slide"><img src="assets/fmcg/8_Everything-a-Manager-Needs-One-Screen.png" alt="Slide 8"></div>
+        <div class="slide"><img src="assets/fmcg/9_From-80-115-Minutes-a-Day-to-Under-5-Minutes.png" alt="Slide 9"></div>
       </div>
 
-      <div class="below-deck"></div>
+      <!-- CONTROLS -->
+      <div class="controls-bar">
+        <button class="c-btn" id="btn-prev" title="Previous">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
+        </button>
+        <button class="c-pause" id="btn-pause" title="Pause">
+          <svg id="ico-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+        </button>
+        <button class="c-btn" id="btn-next" title="Next">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
+        </button>
+        <div class="c-dots" id="dots"></div>
+        <div class="c-counter"><span id="cur">1</span> / <span id="tot">9</span></div>
+        <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
+      </div>
         <div class="c-counter"><span id="cur">1</span> / <span id="tot">10</span></div>
         <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
       </div>
