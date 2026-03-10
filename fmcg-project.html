@@ -17,7 +17,7 @@
       --line: rgba(100,160,255,0.15);
     }
     *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
-    html, body { height:100%; overflow:hidden; }
+    html, body { height:100%; }
     body {
       font-family:'DM Sans',sans-serif;
       background:var(--bg); color:var(--text);
@@ -38,30 +38,37 @@
     .nav-back:hover { color:var(--accent); }
     .nav-back svg { width:12px; height:12px; }
 
-    /* ── BODY: 50/50 ── */
+    /* ── BODY ── */
     .body-row {
-      flex:1; position:relative; z-index:2;
-      display:grid; grid-template-columns:1fr 1fr;
-      overflow:hidden; min-height:0;
+      flex:1;
+      position:relative;
+      z-index:2;
+      max-width:980px;
+      width:100%;
+      margin:0 auto;
+      padding:24px 28px 34px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      overflow-y:auto;
     }
 
     /* ══ LEFT ══ */
     .left {
       display:flex; flex-direction:column; justify-content:flex-start;
-      border-right:1px solid var(--line);
-      padding:20px 36px 24px;
-      overflow:hidden;
-      background:linear-gradient(180deg,rgba(77,184,255,.03) 0%,transparent 60%);
+      padding:0;
+      overflow:visible;
+      background:none;
     }
-    .left-heading { font-family:'Playfair Display',serif; font-size:1.58rem; line-height:1.24; margin-top:0; margin-bottom:24px; text-align:left; white-space:normal; font-weight:700; }
+    .left-heading { font-family:'Playfair Display',serif; font-size:1.58rem; line-height:1.24; margin:0; text-align:center; white-space:normal; font-weight:700; }
     .left-heading em { color:var(--accent); font-style:italic; }
-    .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:22px; }
+    .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:0; }
     .left-problem strong { color:var(--muted); font-weight:400; }
     .divider { height:1px; background:var(--line); margin:16px 0; }
     .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; }
     .stack-row { display:flex; flex-wrap:wrap; gap:6px; }
     .stack-pill { font-size:.66rem; font-weight:400; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
-    .btn-row { display:flex; gap:8px; margin-top:auto; padding-top:22px; justify-content:flex-start; }
+    .btn-row { display:flex; gap:8px; padding-top:8px; justify-content:flex-start; flex-wrap:wrap; }
     .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:400; text-decoration:none; transition:all .22s; white-space:nowrap; }
     .btn-main svg { width:13px; height:13px; }
     .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
@@ -72,8 +79,9 @@
     /* ══ RIGHT ══ */
     .right {
       display:flex; flex-direction:column;
-      padding:20px 24px 16px;
-      overflow:hidden; min-height:0;
+      padding:0;
+      overflow:visible;
+      min-height:0;
       gap:10px;
     }
 
@@ -84,19 +92,19 @@
     }
     .slide-label::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,rgba(77,184,255,.3),transparent); }
 
-    /* Slideshow box — 55% of right height */
     .deck-wrap {
-      flex-shrink:0;
-      height:70%;
+      width:100%;
+      aspect-ratio:16/9;
       position:relative;
       background:rgba(8,15,30,.8);
       border:1px solid var(--line);
       border-radius:14px;
       overflow:hidden;
     }
-
-    /* empty space below */
-    .below-deck { flex:1; }
+    @media (max-width:820px) {
+      .body-row { padding:20px 16px 24px; }
+      .deck-wrap { aspect-ratio:4/3; }
+    }
 
     /* controls */
     .controls-bar {
@@ -257,10 +265,39 @@
   </nav>
 
   <div class="body-row">
+    <div class="left-heading">FMCG Sales <em>Automation</em> Pipeline</div>
 
-    <!-- LEFT -->
+    <div class="right">
+      <div class="slide-label">Project Walkthrough</div>
+      <div class="deck-wrap" id="deck">
+        <div class="slide active"><img src="assets/fmcg/1_A-sales-automation-project-that-eliminated-80-115-minutes-of-daily-manual-work-replacing-a-repetitiv.png" alt="Slide 1"></div>
+        <div class="slide"><img src="assets/fmcg/2_Every-Morning-Same-Manual-Grind-Every-Single-Day.png" alt="Slide 2"></div>
+        <div class="slide"><img src="assets/fmcg/3_One-Automated-Chain-Zero-Manual-Steps.png" alt="Slide 3"></div>
+        <div class="slide"><img src="assets/fmcg/4_A-New-File-Every-Morning-Automatically.png" alt="Slide 4"></div>
+        <div class="slide"><img src="assets/fmcg/5_15-Cleaning-Steps-Written-Once-Run-Forever.png" alt="Slide 5"></div>
+        <div class="slide"><img src="assets/fmcg/6_indian-rupee166-Crore-8353-Orders-Zero-Manual-Updates.png" alt="Slide 6"></div>
+        <div class="slide"><img src="assets/fmcg/7_Every-Run-On-Record-Automatically.png" alt="Slide 7"></div>
+        <div class="slide"><img src="assets/fmcg/8_Everything-a-Manager-Needs-One-Screen.png" alt="Slide 8"></div>
+        <div class="slide"><img src="assets/fmcg/9_From-80-115-Minutes-a-Day-to-Under-5-Minutes.png" alt="Slide 9"></div>
+      </div>
+
+      <div class="controls-bar">
+        <button class="c-btn" id="btn-prev" title="Previous">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
+        </button>
+        <button class="c-pause" id="btn-pause" title="Pause">
+          <svg id="ico-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+        </button>
+        <button class="c-btn" id="btn-next" title="Next">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
+        </button>
+        <div class="c-dots" id="dots"></div>
+        <div class="c-counter"><span id="cur">1</span> / <span id="tot">9</span></div>
+        <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
+      </div>
+    </div>
+
     <div class="left">
-      <div class="left-heading">FMCG Sales <em>Automation</em> Pipeline</div>
       <p class="left-problem">
         A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single working day.
         <br><br>
@@ -285,42 +322,6 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
           Read Article
         </a>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="right">
-      <div class="slide-label">Project Walkthrough</div>
-
-                  <div class="deck-wrap" id="deck">
-        <div class="slide active"><img src="assets/fmcg/1_A-sales-automation-project-that-eliminated-80-115-minutes-of-daily-manual-work-replacing-a-repetitiv.png" alt="Slide 1"></div>
-        <div class="slide"><img src="assets/fmcg/2_Every-Morning-Same-Manual-Grind-Every-Single-Day.png" alt="Slide 2"></div>
-        <div class="slide"><img src="assets/fmcg/3_One-Automated-Chain-Zero-Manual-Steps.png" alt="Slide 3"></div>
-        <div class="slide"><img src="assets/fmcg/4_A-New-File-Every-Morning-Automatically.png" alt="Slide 4"></div>
-        <div class="slide"><img src="assets/fmcg/5_15-Cleaning-Steps-Written-Once-Run-Forever.png" alt="Slide 5"></div>
-        <div class="slide"><img src="assets/fmcg/6_indian-rupee166-Crore-8353-Orders-Zero-Manual-Updates.png" alt="Slide 6"></div>
-        <div class="slide"><img src="assets/fmcg/7_Every-Run-On-Record-Automatically.png" alt="Slide 7"></div>
-        <div class="slide"><img src="assets/fmcg/8_Everything-a-Manager-Needs-One-Screen.png" alt="Slide 8"></div>
-        <div class="slide"><img src="assets/fmcg/9_From-80-115-Minutes-a-Day-to-Under-5-Minutes.png" alt="Slide 9"></div>
-      </div>
-
-      <!-- CONTROLS -->
-      <div class="controls-bar">
-        <button class="c-btn" id="btn-prev" title="Previous">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
-        </button>
-        <button class="c-pause" id="btn-pause" title="Pause">
-          <svg id="ico-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
-        </button>
-        <button class="c-btn" id="btn-next" title="Next">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
-        </button>
-        <div class="c-dots" id="dots"></div>
-
-        <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
-      </div>
-        <div class="c-counter"><span id="cur">1</span> / <span id="tot">9</span></div>
-        <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
       </div>
     </div>
   </div>
