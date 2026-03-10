@@ -339,6 +339,82 @@
     })();
 
 
+
+    /* SLIDESHOW */
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#deck .slide'));
+      const dotsEl = document.getElementById('dots');
+      const curEl  = document.getElementById('cur');
+      const totEl  = document.getElementById('tot');
+      const prog   = document.getElementById('prog');
+      const DELAY  = 4000;
+      let cur = 0, paused = false, progTimer, progStart, progElapsed = 0;
+
+      if(totEl) totEl.textContent = slides.length;
+
+      slides.forEach((_,i)=>{
+        const d = document.createElement('div');
+        d.className = 'c-dot' + (i===0?' active':'');
+        d.addEventListener('click', ()=>goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(n){
+        slides[cur].classList.remove('active');
+        dotsEl.children[cur].classList.remove('active');
+        cur = (n + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dotsEl.children[cur].classList.add('active');
+        if(curEl) curEl.textContent = cur + 1;
+        resetProg();
+        if(!paused) startProg();
+      }
+
+      function resetProg(){
+        prog.style.width='0%';
+        progElapsed=0;
+        clearInterval(progTimer);
+      }
+
+      function startProg(){
+        clearInterval(progTimer);
+        progStart = Date.now() - progElapsed;
+        progTimer = setInterval(()=>{
+          progElapsed = Date.now() - progStart;
+          prog.style.width = Math.min(100,(progElapsed/DELAY)*100) + '%';
+          if(progElapsed >= DELAY){ goTo(cur+1); }
+        }, 50);
+      }
+
+      document.getElementById('btn-prev').addEventListener('click',()=>{
+        clearInterval(progTimer);
+        progElapsed=0;
+        goTo(cur-1);
+        if(!paused) startProg();
+      });
+
+      document.getElementById('btn-next').addEventListener('click',()=>{
+        clearInterval(progTimer);
+        progElapsed=0;
+        goTo(cur+1);
+        if(!paused) startProg();
+      });
+
+      document.getElementById('btn-pause').addEventListener('click',function(){
+        paused = !paused;
+        const ico = document.getElementById('ico-pause');
+        if(paused){
+          clearInterval(progTimer);
+          ico.innerHTML = '<polygon points="5,3 19,8 5,13" fill="currentColor"/>';
+        } else {
+          startProg();
+          ico.innerHTML = '<rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/>';
+        }
+      });
+
+      startProg();
+    })();
+
   </script>
 </body>
 </html>
