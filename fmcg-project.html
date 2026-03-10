@@ -65,10 +65,10 @@
     .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:0; }
     .left-problem strong { color:var(--muted); font-weight:400; }
     .divider { height:1px; background:var(--line); margin:16px 0; }
-    .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; }
-    .stack-row { display:flex; flex-wrap:wrap; gap:6px; }
+    .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; text-align:center; }
+    .stack-row { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
     .stack-pill { font-size:.66rem; font-weight:400; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
-    .btn-row { display:flex; gap:8px; padding-top:8px; justify-content:flex-start; flex-wrap:wrap; }
+    .btn-row { display:flex; gap:8px; padding-top:8px; justify-content:center; flex-wrap:wrap; }
     .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:400; text-decoration:none; transition:all .22s; white-space:nowrap; }
     .btn-main svg { width:13px; height:13px; }
     .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
@@ -94,7 +94,8 @@
 
     .deck-wrap {
       width:100%;
-      aspect-ratio:16/9;
+      aspect-ratio:16/10.8;
+      min-height:520px;
       position:relative;
       background:rgba(8,15,30,.8);
       border:1px solid var(--line);
@@ -103,7 +104,7 @@
     }
     @media (max-width:820px) {
       .body-row { padding:20px 16px 24px; }
-      .deck-wrap { aspect-ratio:4/3; }
+      .deck-wrap { aspect-ratio:4/3; min-height:unset; }
     }
 
     /* controls */
@@ -301,7 +302,7 @@
       <p class="left-problem">
         A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single working day.
         <br><br>
-        This pipeline <strong>eliminates all of it.</strong> Python generates fresh data at 6:30 AM via Task Scheduler. Power Query ingests and cleans every new file automatically. Three VBA macros handle the rest. Power BI surfaces everything in one executive dashboard. <strong>Zero manual work</strong> after setup — saving <strong>30–40 hours a month.</strong>
+        <strong>This pipeline eliminates all of it.</strong> Python generates fresh data at 6:30 AM via Task Scheduler. Power Query ingests and cleans every new file automatically. Three VBA macros handle the rest. Power BI surfaces everything in one executive dashboard. <strong>Zero manual work after setup — saving 30–40 hours a month.</strong>
       </p>
       <div class="divider"></div>
       <div class="stack-label">Tech Stack</div>
