@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FMCG Sales Automation | Ria Singh</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d1a;
+      --card: rgba(12,24,48,0.85);
+      --accent: #4db8ff;
+      --accent-2: #a78bfa;
+      --accent-3: #f472b6;
+      --ok: #34d399;
+      --text: #e8f0ff;
+      --muted: #8ba3c7;
+      --line: rgba(100,160,255,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* STARFIELD */
+    .starfield { position:fixed; inset:0; z-index:0; pointer-events:none; }
+
+    /* TOP NAV */
+    .topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+      background: rgba(6,13,26,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 40px; height: 58px;
+    }
+    .topnav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem; color: var(--accent);
+      text-decoration: none; letter-spacing: .04em;
+    }
+    .topnav-back {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: .76rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--muted);
+      text-decoration: none; transition: color .2s;
+    }
+    .topnav-back:hover { color: var(--accent); }
+    .topnav-back svg { width: 14px; height: 14px; }
+
+    /* HERO TITLE BAND */
+    .hero-band {
+      margin-top: 58px;
+      padding: 52px 60px 36px;
+      position: relative; z-index: 2;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(77,184,255,0.04) 0%, transparent 100%);
+    }
+    .hero-label {
+      font-size: .72rem; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1; margin-bottom: 12px;
+    }
+    .hero-title em { color: var(--accent); font-style: italic; }
+    .hero-sub {
+      color: var(--muted); font-size: .94rem;
+      max-width: 600px; line-height: 1.7;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .tag {
+      font-size: .65rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--accent);
+      background: rgba(77,184,255,.1); border: 1px solid rgba(77,184,255,.2);
+      border-radius: 100px; padding: 4px 10px;
+    }
+
+    /* MAIN LAYOUT */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 0;
+      position: relative; z-index: 2;
+      min-height: calc(100vh - 200px);
+    }
+
+    /* LEFT PANEL */
+    .left-panel {
+      padding: 48px 48px 48px 60px;
+      border-right: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 36px;
+    }
+
+    .section-block {}
+    .block-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent-2);
+      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
+    }
+    .block-label::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(167,139,250,.3), transparent);
+    }
+    .block-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem; margin-bottom: 10px; color: var(--text);
+    }
+    .block-desc {
+      color: var(--muted); font-size: .88rem; line-height: 1.75;
+    }
+
+    /* FEATURE LIST */
+    .feature-list { display: grid; gap: 11px; margin-top: 4px; }
+    .feature-item {
+      display: flex; align-items: flex-start; gap: 11px;
+      padding: 13px 16px;
+      background: rgba(77,184,255,.04);
+      border: 1px solid rgba(77,184,255,.1);
+      border-radius: 11px;
+      transition: border-color .2s, background .2s;
+    }
+    .feature-item:hover {
+      border-color: rgba(77,184,255,.25);
+      background: rgba(77,184,255,.08);
+    }
+    .feature-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0; margin-top: 6px;
+      box-shadow: 0 0 7px rgba(77,184,255,.5);
+    }
+    .feature-text { font-size: .86rem; color: var(--text); line-height: 1.6; }
+    .feature-text strong { color: var(--accent); font-weight: 600; }
+
+    /* TIME SAVED CARD */
+    .time-card {
+      background: linear-gradient(135deg, rgba(52,211,153,.08), rgba(77,184,255,.06));
+      border: 1px solid rgba(52,211,153,.25);
+      border-radius: 14px; padding: 20px 22px;
+    }
+    .time-card-top {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .time-icon {
+      width: 36px; height: 36px; border-radius: 9px;
+      background: rgba(52,211,153,.15);
+      border: 1px solid rgba(52,211,153,.3);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .time-icon svg { width: 18px; height: 18px; color: var(--ok); }
+    .time-card-title { font-size: .9rem; font-weight: 700; color: var(--ok); }
+    .time-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid rgba(52,211,153,.1); }
+    .time-row:last-child { border-bottom: none; }
+    .time-label { font-size: .8rem; color: var(--muted); }
+    .time-val { font-size: .82rem; font-weight: 700; }
+    .time-val.bad { color: #fc8181; }
+    .time-val.good { color: var(--ok); }
+
+    /* TECH STACK */
+    .tech-grid { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tech-pill {
+      display: flex; align-items: center; gap: 7px;
+      padding: 7px 13px;
+      background: rgba(167,139,250,.08);
+      border: 1px solid rgba(167,139,250,.22);
+      border-radius: 100px;
+      font-size: .78rem; font-weight: 600; color: var(--accent-2);
+      transition: all .2s;
+    }
+    .tech-pill:hover { background: rgba(167,139,250,.16); transform: translateY(-2px); }
+    .tech-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); flex-shrink: 0; }
+
+    /* WHO CAN USE */
+    .use-list { display: grid; gap: 8px; margin-top: 4px; }
+    .use-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: .85rem; color: var(--muted); line-height: 1.6;
+    }
+    .use-arrow { color: var(--accent-3); flex-shrink: 0; margin-top: 3px; font-size: .9rem; }
+
+    /* CTA BUTTONS */
+    .cta-group { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 11px;
+      font-size: .84rem; font-weight: 700; text-decoration: none;
+      background: var(--accent); color: #060d1a;
+      border: 1px solid transparent;
+      transition: all .25s ease; letter-spacing: .02em;
+    }
+    .btn-primary:hover { background: #7aceff; transform: translateY(-3px); box-shadow: 0 8px 24px rgba(77,184,255,.3); }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 11px;
+      font-size: .84rem; font-weight: 700; text-decoration: none;
+      border: 1px solid rgba(77,184,255,.35); color: var(--accent);
+      background: rgba(77,184,255,.07);
+      transition: all .25s ease;
+    }
+    .btn-ghost:hover { background: rgba(77,184,255,.15); transform: translateY(-3px); }
+    .btn-pink {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 11px;
+      font-size: .84rem; font-weight: 700; text-decoration: none;
+      border: 1px solid rgba(244,114,182,.35); color: #f9a8d4;
+      background: rgba(244,114,182,.07);
+      transition: all .25s ease;
+    }
+    .btn-pink:hover { background: rgba(244,114,182,.18); transform: translateY(-3px); }
+
+    /* RIGHT PANEL — SLIDESHOW */
+    .right-panel {
+      padding: 48px 52px 48px 48px;
+      display: flex; flex-direction: column;
+      gap: 0;
+    }
+    .slideshow-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
+    }
+    .slideshow-label::after {
+      content: ""; flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(77,184,255,.3), transparent);
+    }
+
+    .slideshow-wrap {
+      position: relative;
+      background: rgba(12,24,48,0.7);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      flex: 1;
+      min-height: 460px;
+    }
+
+    /* SLIDES */
+    .slide {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      pointer-events: none;
+    }
+    .slide.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .slide-img-wrap {
+      flex: 1; overflow: hidden; position: relative;
+      background: #080f1e;
+    }
+    .slide-img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 16px;
+    }
+
+    /* slide caption bar */
+    .slide-caption {
+      padding: 16px 22px;
+      background: rgba(6,13,26,0.92);
+      border-top: 1px solid var(--line);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .slide-caption-title {
+      font-size: .88rem; font-weight: 700; color: var(--text);
+    }
+    .slide-caption-desc {
+      font-size: .78rem; color: var(--muted); line-height: 1.55;
+    }
+
+    /* SLIDE COUNTER + CONTROLS */
+    .slideshow-controls {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 16px;
+    }
+    .ctrl-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(77,184,255,.08);
+      border: 1px solid rgba(77,184,255,.22);
+      color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; flex-shrink: 0;
+    }
+    .ctrl-btn:hover { background: rgba(77,184,255,.18); transform: scale(1.08); }
+    .ctrl-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+    .ctrl-btn svg { width: 16px; height: 16px; }
+
+    .pause-btn {
+      width: 38px; height: 38px; border-radius: 10px;
+      background: rgba(167,139,250,.08);
+      border: 1px solid rgba(167,139,250,.22);
+      color: var(--accent-2);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; flex-shrink: 0;
+    }
+    .pause-btn:hover { background: rgba(167,139,250,.18); }
+    .pause-btn svg { width: 15px; height: 15px; }
+
+    .slide-counter {
+      font-size: .78rem; font-weight: 600; color: var(--muted);
+      flex: 1; text-align: center;
+    }
+    .slide-counter span { color: var(--accent); font-weight: 700; }
+
+    /* PROGRESS DOTS */
+    .progress-dots {
+      display: flex; gap: 6px; align-items: center; justify-content: center;
+      margin-top: 12px;
+    }
+    .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(77,184,255,.2);
+      border: 1px solid rgba(77,184,255,.3);
+      cursor: pointer; transition: all .25s;
+    }
+    .dot.active {
+      background: var(--accent);
+      box-shadow: 0 0 8px rgba(77,184,255,.5);
+      width: 20px; border-radius: 3px;
+    }
+
+    /* PROGRESS BAR */
+    .progress-bar-wrap {
+      height: 2px; background: rgba(77,184,255,.1);
+      border-radius: 2px; margin-top: 10px; overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 2px;
+      transition: width 0.1s linear;
+    }
+
+    /* LAST SLIDE CTA */
+    .slide-cta-wrap {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 20px; padding: 40px 32px;
+      background: linear-gradient(135deg, rgba(77,184,255,.06), rgba(167,139,250,.06));
+      flex: 1;
+    }
+    .slide-cta-icon {
+      width: 56px; height: 56px; border-radius: 16px;
+      background: rgba(77,184,255,.1);
+      border: 1px solid rgba(77,184,255,.25);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .slide-cta-icon svg { width: 28px; height: 28px; color: var(--accent); }
+    .slide-cta-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; text-align: center; color: var(--text);
+    }
+    .slide-cta-desc {
+      font-size: .86rem; color: var(--muted);
+      text-align: center; max-width: 320px; line-height: 1.65;
+    }
+    .slide-cta-btn {
+      display: inline-flex; align-items: center; gap: 9px;
+      padding: 13px 28px; border-radius: 12px;
+      font-size: .88rem; font-weight: 700; text-decoration: none;
+      background: var(--accent); color: #060d1a;
+      transition: all .25s; letter-spacing: .02em;
+    }
+    .slide-cta-btn:hover {
+      background: #7aceff; transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(77,184,255,.35);
+    }
+    .slide-cta-btn svg { width: 16px; height: 16px; }
+
+    /* FOOTER */
+    .page-footer {
+      border-top: 1px solid var(--line);
+      padding: 24px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      position: relative; z-index: 2;
+      color: var(--muted); font-size: .8rem;
+    }
+
+    @media (max-width: 960px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .left-panel { border-right: none; border-bottom: 1px solid var(--line); padding: 36px 28px; }
+      .right-panel { padding: 36px 28px; }
+      .hero-band { padding: 36px 28px 28px; }
+      .topnav { padding: 0 20px; }
+      .page-footer { padding: 20px 28px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STARFIELD -->
+  <canvas class="starfield" id="stars"></canvas>
+
+  <!-- TOP NAV -->
+  <nav class="topnav">
+    <a class="topnav-logo" href="index.html">Ria Singh</a>
+    <a class="topnav-back" href="projects.html">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 12L6 8l4-4"/></svg>
+      All Projects
+    </a>
+  </nav>
+
+  <!-- HERO BAND -->
+  <div class="hero-band">
+    <div class="hero-label">Portfolio Project</div>
+    <h1 class="hero-title">FMCG Sales <em>Automation</em> Pipeline</h1>
+    <p class="hero-sub">A fully automated daily sales reporting pipeline for a regional FMCG distributor — from raw CSV to executive dashboard with zero manual intervention.</p>
+    <div class="tag-row">
+      <span class="tag">Python</span>
+      <span class="tag">Power Query</span>
+      <span class="tag">Excel VBA</span>
+      <span class="tag">Power BI</span>
+      <span class="tag">Windows Task Scheduler</span>
+      <span class="tag">DAX</span>
+    </div>
+  </div>
+
+  <!-- MAIN TWO-COLUMN LAYOUT -->
+  <div class="main-layout">
+
+    <!-- LEFT -->
+    <div class="left-panel">
+
+      <!-- What it does -->
+      <div class="section-block">
+        <div class="block-label">What this project does</div>
+        <div class="feature-list">
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div class="feature-text"><strong>Fully automated pipeline</strong> — Python generates a fresh daily CSV at 6:30 AM via Windows Task Scheduler. No manual trigger needed.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div class="feature-text"><strong>Self-cleaning data</strong> — Power Query ingests every new file, removes duplicates, fixes nulls, strips bad rows, and calculates revenue in one reusable pipeline.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div class="feature-text"><strong>Live EDA layer</strong> — Six structured summary blocks in Excel auto-update the moment new data loads. No formula editing required, ever.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div class="feature-text"><strong>Audit trail built in</strong> — A VBA macro logs every refresh with timestamp, row count, and data quality metrics. Every run is on record.</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-dot"></div>
+            <div class="feature-text"><strong>Executive dashboard</strong> — One-page Power BI report with 5 KPI cards, daily trend, category and salesperson breakdowns, and a region slicer.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Time Saved -->
+      <div class="section-block">
+        <div class="block-label">Time saved</div>
+        <div class="time-card">
+          <div class="time-card-top">
+            <div class="time-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div class="time-card-title">80–115 minutes saved every single day</div>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Consolidating daily CSVs</span>
+            <span class="time-val bad">15–20 min → 0</span>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Cleaning and fixing data</span>
+            <span class="time-val bad">20–30 min → 0</span>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Updating KPIs and summaries</span>
+            <span class="time-val bad">15–20 min → 0</span>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Refreshing charts and reports</span>
+            <span class="time-val bad">20–30 min → 0</span>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Exporting daily PDF report</span>
+            <span class="time-val good">10–15 min → &lt;1 min</span>
+          </div>
+          <div class="time-row">
+            <span class="time-label">Monthly total saved</span>
+            <span class="time-val good">30–40 hrs/month</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who can use it -->
+      <div class="section-block">
+        <div class="block-label">Who can use this</div>
+        <div class="use-list">
+          <div class="use-item"><span class="use-arrow">→</span> Regional FMCG distributors receiving daily sales exports from field teams</div>
+          <div class="use-item"><span class="use-arrow">→</span> Retail chains and kirana networks doing manual daily reconciliation</div>
+          <div class="use-item"><span class="use-arrow">→</span> Any mid-size operations team running Excel-based reporting workflows</div>
+          <div class="use-item"><span class="use-arrow">→</span> Companies where IT won't approve a cloud budget but need automation now</div>
+        </div>
+      </div>
+
+      <!-- Scope -->
+      <div class="section-block">
+        <div class="block-label">Scope and expansion</div>
+        <div class="use-list">
+          <div class="use-item"><span class="use-arrow">→</span> Replace Python simulator with real ERP export, POS dump, or field app CSV — the rest of the pipeline is unchanged</div>
+          <div class="use-item"><span class="use-arrow">→</span> Lift local folder to Azure Blob or SharePoint for cloud-ready ingestion</div>
+          <div class="use-item"><span class="use-arrow">→</span> Replace Task Scheduler with Power Automate for full cloud scheduling</div>
+          <div class="use-item"><span class="use-arrow">→</span> Publish to Power BI Service for scheduled refresh and mobile access</div>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="section-block">
+        <div class="block-label">Tech stack</div>
+        <div class="tech-grid">
+          <div class="tech-pill"><div class="tech-dot"></div>Python</div>
+          <div class="tech-pill"><div class="tech-dot"></div>Windows Task Scheduler</div>
+          <div class="tech-pill"><div class="tech-dot"></div>Power Query (M)</div>
+          <div class="tech-pill"><div class="tech-dot"></div>Excel VBA</div>
+          <div class="tech-pill"><div class="tech-dot"></div>Power BI Desktop</div>
+          <div class="tech-pill"><div class="tech-dot"></div>DAX</div>
+          <div class="tech-pill"><div class="tech-dot"></div>pandas / numpy</div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="section-block">
+        <div class="cta-group">
+          <a class="btn-primary" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            View on GitHub
+          </a>
+          <a class="btn-ghost" href="https://medium.com/@ria" target="_blank" rel="noreferrer">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+            Read Article
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT — SLIDESHOW -->
+    <div class="right-panel">
+      <div class="slideshow-label">Project walkthrough</div>
+
+      <div class="slideshow-wrap" id="slideshowWrap">
+
+        <!-- SLIDE 1: Folder / Pipeline running proof -->
+        <div class="slide active" id="slide-0">
+          <div class="slide-img-wrap">
+            <img class="slide-img" src="assets/fmcg/slide-folder.png" alt="Daily sales CSVs in folder" />
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">The pipeline is live — new CSV every morning</div>
+            <div class="slide-caption-desc">Each dated file was dropped automatically by Task Scheduler at 6:30 AM. This folder is the only manual-free proof you need that the automation works.</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2: Power Query Applied Steps -->
+        <div class="slide" id="slide-1">
+          <div class="slide-img-wrap">
+            <img class="slide-img" src="assets/fmcg/slide-powerquery.png" alt="Power Query applied steps" />
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">15 cleaning steps — written once, run forever</div>
+            <div class="slide-caption-desc">Power Query removes duplicates, fixes nulls, strips negative quantities, calculates revenue and net revenue. Every new CSV gets the same treatment automatically.</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: EDA Sheet -->
+        <div class="slide" id="slide-2">
+          <div class="slide-img-wrap">
+            <img class="slide-img" src="assets/fmcg/slide-eda.png" alt="EDA summary sheet" />
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">Live EDA layer — 6 blocks, zero manual updates</div>
+            <div class="slide-caption-desc">8,353 orders, ₹1.66 Cr revenue, 5.15% return rate. All structured references to the sales_data table. When new data loads, every number updates instantly.</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 4: LOG Sheet -->
+        <div class="slide" id="slide-3">
+          <div class="slide-img-wrap">
+            <img class="slide-img" src="assets/fmcg/slide-log.png" alt="VBA audit log sheet" />
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">Audit trail — every run logged automatically</div>
+            <div class="slide-caption-desc">Row counts climb ~500 per day. Unknown customers and unassigned regions stay at zero — confirming Power Query catches every quality issue before it reaches the analysis layer.</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 5: Power BI Dashboard -->
+        <div class="slide" id="slide-4">
+          <div class="slide-img-wrap">
+            <img class="slide-img" src="assets/fmcg/slide-dashboard.png" alt="Power BI executive dashboard" />
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">Executive dashboard — everything on one screen</div>
+            <div class="slide-caption-desc">5 KPI cards, daily revenue trend, category and salesperson breakdowns, channel donut, and a region slicer. One-click refresh pulls latest data from Excel.</div>
+          </div>
+        </div>
+
+        <!-- SLIDE 6: CTA -->
+        <div class="slide" id="slide-5">
+          <div class="slide-cta-wrap">
+            <div class="slide-cta-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div class="slide-cta-title">See the full code and documentation</div>
+            <div class="slide-cta-desc">Python simulator, batch file, Power Query M code, VBA macros, and Power BI file — all in the repo.</div>
+            <a class="slide-cta-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
+              View Full Project on GitHub
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+          </div>
+          <div class="slide-caption">
+            <div class="slide-caption-title">Full source available on GitHub</div>
+            <div class="slide-caption-desc">Includes the complete Medium article walkthrough covering two debugging battles and every architectural decision.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="slideshow-controls">
+        <button class="ctrl-btn" id="prevBtn" onclick="changeSlide(-1)" aria-label="Previous slide">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
+        </button>
+        <button class="pause-btn" id="pauseBtn" onclick="togglePause()" aria-label="Pause slideshow">
+          <svg id="pauseIcon" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+        </button>
+        <div class="slide-counter">Slide <span id="curSlide">1</span> of <span id="totSlide">6</span></div>
+        <button class="ctrl-btn" id="nextBtn" onclick="changeSlide(1)" aria-label="Next slide">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
+        </button>
+      </div>
+
+      <!-- DOTS -->
+      <div class="progress-dots" id="dots"></div>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-bar-wrap">
+        <div class="progress-bar-fill" id="progressBar"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="page-footer">
+    <span>Ria Singh · Data Analyst Portfolio</span>
+    <span>Pipeline data updates daily · Numbers shown reflect latest run</span>
+  </footer>
+
+  <script>
+    // STARFIELD
+    (function(){
+      const canvas = document.getElementById('stars');
+      const ctx = canvas.getContext('2d');
+      let stars = [];
+      function resize(){ canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+      function init(){
+        stars = [];
+        for(let i=0;i<140;i++){
+          stars.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height,
+            r:Math.random()*1.2+0.2, a:Math.random(), da:(Math.random()-.5)*.004 });
+        }
+      }
+      function draw(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        stars.forEach(s=>{
+          s.a = Math.max(0.05, Math.min(1, s.a + s.da));
+          if(s.a<=0.05||s.a>=1) s.da*=-1;
+          ctx.beginPath(); ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
+          ctx.fillStyle=`rgba(180,210,255,${s.a})`; ctx.fill();
+        });
+        requestAnimationFrame(draw);
+      }
+      resize(); init(); draw();
+      window.addEventListener('resize',()=>{ resize(); init(); });
+    })();
+
+    // SLIDESHOW
+    const TOTAL = 6;
+    const INTERVAL = 4500;
+    let current = 0;
+    let paused = false;
+    let timer = null;
+    let progress = 0;
+    let progressTimer = null;
+
+    const slides = document.querySelectorAll('.slide');
+    const dotsWrap = document.getElementById('dots');
+    const progressBar = document.getElementById('progressBar');
+    const curSlideEl = document.getElementById('curSlide');
+    const pauseIcon = document.getElementById('pauseIcon');
+
+    // build dots
+    for(let i=0;i<TOTAL;i++){
+      const d = document.createElement('div');
+      d.className = 'dot' + (i===0?' active':'');
+      d.onclick = ()=>{ goTo(i); resetTimer(); };
+      dotsWrap.appendChild(d);
+    }
+
+    function updateUI(){
+      slides.forEach((s,i)=>s.classList.toggle('active',i===current));
+      document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+      curSlideEl.textContent = current+1;
+      document.getElementById('prevBtn').disabled = current===0;
+    }
+
+    function goTo(n){
+      current = Math.max(0, Math.min(TOTAL-1, n));
+      updateUI();
+      resetProgress();
+    }
+
+    function changeSlide(dir){
+      const next = current + dir;
+      if(next < 0 || next >= TOTAL) return;
+      goTo(next);
+      if(!paused) resetTimer();
+    }
+
+    function resetProgress(){
+      progress = 0;
+      progressBar.style.width = '0%';
+    }
+
+    function startProgressTimer(){
+      clearInterval(progressTimer);
+      progressTimer = setInterval(()=>{
+        if(paused) return;
+        progress += 100/(INTERVAL/100);
+        if(progress > 100) progress = 100;
+        progressBar.style.width = progress + '%';
+      }, 100);
+    }
+
+    function resetTimer(){
+      clearTimeout(timer);
+      resetProgress();
+      if(!paused){
+        timer = setTimeout(()=>{
+          if(current < TOTAL-1) goTo(current+1);
+          else goTo(0);
+          resetTimer();
+        }, INTERVAL);
+      }
+    }
+
+    function togglePause(){
+      paused = !paused;
+      if(paused){
+        clearTimeout(timer);
+        pauseIcon.innerHTML = '<polygon points="5,3 5,13 13,8" fill="currentColor"/>';
+      } else {
+        pauseIcon.innerHTML = '<rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/>';
+        resetTimer();
+      }
+    }
+
+    updateUI();
+    resetTimer();
+    startProgressTimer();
+  </script>
+</body>
+</html>
