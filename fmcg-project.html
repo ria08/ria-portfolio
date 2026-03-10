@@ -47,24 +47,24 @@
 
     /* ══ LEFT ══ */
     .left {
-      display:flex; flex-direction:column;
+      display:flex; flex-direction:column; justify-content:center;
       border-right:1px solid var(--line);
-      padding:32px 32px 24px;
+      padding:32px 36px;
       overflow:hidden;
       background:linear-gradient(180deg,rgba(77,184,255,.03) 0%,transparent 60%);
     }
     .left-label { font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
     .left-heading { font-family:'Playfair Display',serif; font-size:1.6rem; line-height:1.15; margin-bottom:12px; }
     .left-heading em { color:var(--accent); font-style:italic; }
-    .left-problem { color:var(--muted); font-size:.9rem; line-height:1.75; flex:1; }
+    .left-problem { color:var(--muted); font-size:.88rem; line-height:1.75; }
     .left-problem strong { color:var(--text); }
-    .divider { height:1px; background:var(--line); margin:18px 0; flex-shrink:0; }
-    .stack-label { font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:10px; }
+    .divider { height:1px; background:var(--line); margin:16px 0; }
+    .stack-label { font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; }
     .stack-row { display:flex; flex-wrap:wrap; gap:6px; }
     .stack-pill { font-size:.66rem; font-weight:700; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
-    .btn-row { display:flex; gap:10px; margin-top:18px; flex-shrink:0; }
-    .btn-main { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:12px 0; border-radius:10px; font-size:.82rem; font-weight:700; text-decoration:none; transition:all .22s; }
-    .btn-main svg { width:14px; height:14px; }
+    .btn-row { display:flex; gap:8px; margin-top:14px; }
+    .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:700; text-decoration:none; transition:all .22s; white-space:nowrap; }
+    .btn-main svg { width:13px; height:13px; }
     .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
     .btn-blue:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
     .btn-ghost { border:1px solid rgba(77,184,255,.3); color:var(--accent); background:rgba(77,184,255,.07); }
@@ -278,171 +278,19 @@
     <div class="right">
       <div class="slide-label">Project Walkthrough</div>
 
-      <div class="deck-wrap" id="deck">
-
-        <!-- S1: The Problem -->
-        <div class="slide s-textonly active">
-          <span class="s-badge">01 — The Problem</span>
-          <div class="s-title">Every morning.<br>Same manual grind. <em>Every single day.</em></div>
-          <table class="time-tbl" style="max-width:400px;">
-            <tr><td>Consolidate CSV files</td><td class="bad">15–20 min</td></tr>
-            <tr><td>Clean data — dupes, blanks, negatives</td><td class="bad">20–30 min</td></tr>
-            <tr><td>Update KPI summaries</td><td class="bad">15–20 min</td></tr>
-            <tr><td>Rebuild charts for management</td><td class="bad">20–30 min</td></tr>
-            <tr><td>Export and format PDF report</td><td class="bad">10–15 min</td></tr>
-            <tr><td><strong style="color:var(--text);">Total every morning</strong></td><td class="bad" style="font-size:.85rem;">80–115 min</td></tr>
-            <tr><td><strong style="color:var(--text);">Monthly cost</strong></td><td class="bad" style="font-size:.85rem;">30–40 hrs</td></tr>
-          </table>
-        </div>
-
-        <!-- S2: The Solution — chain -->
-        <div class="slide s-textonly">
-          <span class="s-badge">02 — The Solution</span>
-          <div class="s-title">One automated chain.<br><span class="hi3">Zero manual steps.</span></div>
-          <div class="chain">
-            <!-- Python -->
-            <div class="chain-step">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.5 2 8 3.5 8 5v2h4v1H6.5C5 8 4 9 4 11s1 3.5 2.5 3.5H7v-2s-.5-1.5 1.5-1.5h5c1.5 0 2.5-1 2.5-2.5V5c0-1.5-1-3-4-3zM8.5 4.5a.75.75 0 110 1.5.75.75 0 010-1.5z"/><path d="M12 22c3.5 0 4-1.5 4-3v-2h-4v-1h5.5c1.5 0 2.5-1 2.5-3s-1-3.5-2.5-3.5H17v2s.5 1.5-1.5 1.5h-5c-1.5 0-2.5 1-2.5 2.5v4c0 1.5 1 3 4 3zm3.5-2.5a.75.75 0 110-1.5.75.75 0 010 1.5z"/></svg>
-              <span class="cs-name">Generate</span>
-              <span class="cs-tool">Python</span>
-            </div>
-            <span class="chain-arrow">→</span>
-            <!-- Scheduler -->
-            <div class="chain-step">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-              <span class="cs-name">Schedule</span>
-              <span class="cs-tool">Task Scheduler</span>
-            </div>
-            <span class="chain-arrow">→</span>
-            <!-- Power Query -->
-            <div class="chain-step">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 10h10M4 14h12M4 18h8"/><path d="M19 14l2 2-2 2"/></svg>
-              <span class="cs-name">Clean</span>
-              <span class="cs-tool">Power Query</span>
-            </div>
-            <span class="chain-arrow">→</span>
-            <!-- VBA -->
-            <div class="chain-step">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l2 2-2 2M13 15h3"/></svg>
-              <span class="cs-name">Automate</span>
-              <span class="cs-tool">VBA</span>
-            </div>
-            <span class="chain-arrow">→</span>
-            <!-- Power BI -->
-            <div class="chain-step">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13M11 17V9M15 17V11M19 17V7"/></svg>
-              <span class="cs-name">Visualise</span>
-              <span class="cs-tool">Power BI</span>
-            </div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-chip"><span class="sv">8,353+</span><span class="sl">Orders</span></div>
-            <div class="stat-chip"><span class="sv">5</span><span class="sl">Regions</span></div>
-            <div class="stat-chip"><span class="sv">10</span><span class="sl">Sales Reps</span></div>
-            <div class="stat-chip"><span class="sv">30</span><span class="sl">SKUs</span></div>
-            <div class="stat-chip" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.2);"><span class="sv" style="color:var(--ok);">0</span><span class="sl">Manual Steps</span></div>
-          </div>
-        </div>
-
-        <!-- S3: CSV folder -->
-        <div class="slide s-imgslide">
-          <div class="s-top-text">
-            <span class="s-badge">03 — Live Pipeline</span>
-            <div class="s-title">A new file, every morning. <em>Automatically.</em></div>
-            <div class="s-body">Task Scheduler fires at <span class="accent">6:30 AM</span>. A dated CSV appears before the analyst opens their laptop. <span class="ok">No human triggered these.</span></div>
-          </div>
-          <div class="s-img-panel"><img src="assets/fmcg/slide-folder.png" alt="Daily CSV folder"/></div>
-        </div>
-
-        <!-- S4: Power Query -->
-        <div class="slide s-imgslide">
-          <div class="s-top-text">
-            <span class="s-badge">04 — Power Query</span>
-            <div class="s-title">15 cleaning steps. <em>Written once. Run forever.</em></div>
-            <div class="s-body">Removes dupes · fixes nulls · strips negatives · calculates revenue. Every new file, same treatment. <span class="accent">Automatic.</span></div>
-          </div>
-          <div class="s-img-panel"><img src="assets/fmcg/slide-powerquery.png" alt="Power Query Applied Steps"/></div>
-        </div>
-
-        <!-- S5: EDA -->
-        <div class="slide s-imgslide">
-          <div class="s-top-text">
-            <span class="s-badge">05 — Live EDA</span>
-            <div class="s-title"><em>₹1.66 Crore. 8,353 orders.</em> Zero manual updates.</div>
-            <div class="s-body">Six structured blocks pull from the <span class="accent">sales_data</span> table. Every number refreshes <span class="ok">instantly</span> when new data loads.</div>
-          </div>
-          <div class="s-img-panel"><img src="assets/fmcg/slide-eda.png" alt="EDA summary sheet"/></div>
-        </div>
-
-        <!-- S6: LOG -->
-        <div class="slide s-imgslide">
-          <div class="s-top-text">
-            <span class="s-badge">06 — Audit Trail</span>
-            <div class="s-title">Every run. <em>On record.</em> Automatically.</div>
-            <div class="s-body">Row counts climb <span class="accent">~500 per day</span>. Unknown customers and unassigned regions at <span class="ok">zero every run</span> — Power Query catches everything.</div>
-          </div>
-          <div class="s-img-panel"><img src="assets/fmcg/slide-log.png" alt="VBA LOG sheet"/></div>
-        </div>
-
-        <!-- S7: Dashboard -->
-        <div class="slide s-imgslide">
-          <div class="s-top-text">
-            <span class="s-badge">07 — Executive Dashboard</span>
-            <div class="s-title">Everything a manager needs. <em>One screen.</em></div>
-            <div class="s-body">5 KPI cards · Daily trend · Category & salesperson breakdown · Channel donut · <span class="accent">Region slicer</span>. One-click refresh.</div>
-          </div>
-          <div class="s-img-panel"><img src="assets/fmcg/slide-dashboard.png" alt="Power BI dashboard"/></div>
-        </div>
-
-        <!-- S8: Time Saved -->
-        <div class="slide s-textonly">
-          <span class="s-badge">08 — The Impact</span>
-          <div class="s-title">From <span style="color:#fc8181;">80–115 min</span> a day<br>to <span class="hi3">under 5 minutes.</span></div>
-          <div class="ba-grid">
-            <div class="ba-card" style="background:rgba(252,129,129,.06);border:1px solid rgba(252,129,129,.2);">
-              <div class="ba-label" style="color:#fc8181;">Without pipeline</div>
-              <div class="ba-val">80–115 min every morning<br>22 working days/month<br><strong style="color:#fc8181;">30–40 hours lost</strong></div>
-            </div>
-            <div class="ba-card" style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);">
-              <div class="ba-label" style="color:var(--ok);">With pipeline</div>
-              <div class="ba-val">Open Excel, open Power BI<br>One click each<br><strong style="color:var(--ok);">Under 5 minutes</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- S9: CTA -->
-        <div class="slide s-cta">
-          <div class="cta-icon-big">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-          </div>
-          <div class="cta-big-title">Production-ready.<br>Source-agnostic. Scalable.</div>
-          <div class="cta-big-desc">Replace Python with a real ERP export or POS dump — the rest is unchanged. The same stack lifts directly to Azure, SharePoint, and Power BI Service.</div>
-          <a class="cta-big-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
-            View Full Project on GitHub
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </a>
-        </div>
-
+      <!-- PASTE YOUR GOOGLE SLIDES EMBED URL BELOW -->
+      <!-- To get it: Google Slides → File → Share → Publish to web → Embed → pick delay → copy src URL only -->
+      <div class="deck-wrap">
+        <iframe
+          id="slides-frame"
+          src="https://docs.google.com/presentation/d/10-ZUGqR0l_FexE7mT3e0MDV_-nD1MLA5w_swZzOHBFg/embed?start=true&loop=true&delayms=4000"
+          frameborder="0"
+          allowfullscreen
+          style="width:100%;height:100%;border:none;border-radius:14px;"
+        ></iframe>
       </div>
 
-      <!-- empty space below deck -->
       <div class="below-deck"></div>
-
-      <!-- controls pinned below deck -->
-      <div class="controls-bar">
-        <button class="c-btn" onclick="nav(-1)">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
-        </button>
-        <button class="c-pause" id="pauseBtn" onclick="togglePause()">
-          <svg id="pauseIcon" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
-        </button>
-        <div class="c-counter">Slide <span id="curNum">1</span> of 9</div>
-        <div class="c-dots" id="dots"></div>
-        <div class="prog-wrap"><div class="prog-fill" id="progFill"></div></div>
-        <button class="c-btn" onclick="nav(1)">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
-        </button>
-      </div>
     </div>
   </div>
 
@@ -456,40 +304,7 @@
       resize();init();draw();window.addEventListener('resize',()=>{resize();init();});
     })();
 
-    /* SLIDESHOW */
-    const TOTAL=9, INTV=5000;
-    let cur=0, paused=false, timer=null, prog=0, pt=null;
-    const slides=document.querySelectorAll('.slide');
-    const dotsWrap=document.getElementById('dots');
-    const progFill=document.getElementById('progFill');
-    const curNum=document.getElementById('curNum');
-    const pauseIcon=document.getElementById('pauseIcon');
 
-    for(let i=0;i<TOTAL;i++){
-      const d=document.createElement('div');
-      d.className='c-dot'+(i===0?' active':'');
-      d.onclick=()=>{go(i);resetT();};
-      dotsWrap.appendChild(d);
-    }
-
-    function go(n){
-      slides[cur].classList.remove('active');
-      cur=((n%TOTAL)+TOTAL)%TOTAL;
-      slides[cur].classList.add('active');
-      document.querySelectorAll('.c-dot').forEach((d,i)=>d.classList.toggle('active',i===cur));
-      curNum.textContent=cur+1;
-      resetProg();
-    }
-    function nav(d){go(cur+d);if(!paused)resetT();}
-    function resetProg(){prog=0;progFill.style.width='0%';}
-    function resetT(){clearTimeout(timer);resetProg();if(!paused)timer=setTimeout(()=>{go(cur+1);resetT();},INTV);}
-    function startPT(){clearInterval(pt);pt=setInterval(()=>{if(paused)return;prog+=100/(INTV/100);progFill.style.width=Math.min(prog,100)+'%';},100);}
-    function togglePause(){
-      paused=!paused;
-      if(paused){clearTimeout(timer);pauseIcon.innerHTML='<polygon points="5,3 5,13 13,8" fill="currentColor"/>';}
-      else{pauseIcon.innerHTML='<rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/>';resetT();}
-    }
-    resetT();startPT();
   </script>
 </body>
 </html>
