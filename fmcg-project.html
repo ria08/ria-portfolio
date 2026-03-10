@@ -38,10 +38,10 @@
     .nav-back:hover { color:var(--accent); }
     .nav-back svg { width:12px; height:12px; }
 
-    /* ── BODY ROW ── */
+    /* ── BODY: 50/50 ── */
     .body-row {
       flex:1; position:relative; z-index:2;
-      display:grid; grid-template-columns:340px 1fr;
+      display:grid; grid-template-columns:1fr 1fr;
       overflow:hidden; min-height:0;
     }
 
@@ -49,217 +49,65 @@
     .left {
       display:flex; flex-direction:column;
       border-right:1px solid var(--line);
-      padding:28px 28px 20px;
+      padding:32px 32px 24px;
       overflow:hidden;
       background:linear-gradient(180deg,rgba(77,184,255,.03) 0%,transparent 60%);
     }
-
-    .left-label {
-      font-size:.58rem; font-weight:700; letter-spacing:.14em;
-      text-transform:uppercase; color:var(--accent); margin-bottom:6px;
-    }
-    .left-heading {
-      font-family:'Playfair Display',serif;
-      font-size:1.55rem; line-height:1.15; margin-bottom:10px;
-    }
+    .left-label { font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
+    .left-heading { font-family:'Playfair Display',serif; font-size:1.6rem; line-height:1.15; margin-bottom:12px; }
     .left-heading em { color:var(--accent); font-style:italic; }
-
-    .left-problem {
-      color:var(--muted); font-size:.9rem; line-height:1.72;
-      flex:1;
-    }
+    .left-problem { color:var(--muted); font-size:.9rem; line-height:1.75; flex:1; }
     .left-problem strong { color:var(--text); }
-
     .divider { height:1px; background:var(--line); margin:18px 0; flex-shrink:0; }
-
     .stack-label { font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:10px; }
     .stack-row { display:flex; flex-wrap:wrap; gap:6px; }
-    .stack-pill {
-      font-size:.66rem; font-weight:700; letter-spacing:.04em;
-      color:var(--accent-2);
-      background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22);
-      border-radius:100px; padding:4px 10px;
-    }
-
+    .stack-pill { font-size:.66rem; font-weight:700; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
     .btn-row { display:flex; gap:10px; margin-top:18px; flex-shrink:0; }
-    .btn-main {
-      flex:1; display:inline-flex; align-items:center; justify-content:center; gap:7px;
-      padding:11px 0; border-radius:10px; font-size:.8rem; font-weight:700;
-      text-decoration:none; transition:all .22s; letter-spacing:.02em;
-    }
+    .btn-main { flex:1; display:inline-flex; align-items:center; justify-content:center; gap:7px; padding:12px 0; border-radius:10px; font-size:.82rem; font-weight:700; text-decoration:none; transition:all .22s; }
     .btn-main svg { width:14px; height:14px; }
     .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
     .btn-blue:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
     .btn-ghost { border:1px solid rgba(77,184,255,.3); color:var(--accent); background:rgba(77,184,255,.07); }
     .btn-ghost:hover { background:rgba(77,184,255,.14); transform:translateY(-2px); }
 
-    /* ══ RIGHT: SLIDESHOW ══ */
+    /* ══ RIGHT ══ */
     .right {
       display:flex; flex-direction:column;
+      padding:20px 24px 16px;
       overflow:hidden; min-height:0;
+      gap:10px;
     }
 
-    /* slide deck */
-    .deck {
-      flex:1; position:relative; overflow:hidden; min-height:0;
+    .slide-label {
+      flex-shrink:0;
+      font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--accent); display:flex; align-items:center; gap:8px;
     }
+    .slide-label::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,rgba(77,184,255,.3),transparent); }
 
-    .slide {
-      position:absolute; inset:0;
-      display:grid;
-      opacity:0;
-      transition:opacity .65s ease;
-      pointer-events:none;
-    }
-    .slide.active { opacity:1; pointer-events:all; }
-
-    /* ── SLIDE LAYOUTS ── */
-
-    /* layout A: image left 65%, text right 35% */
-    .slide.img-left { grid-template-columns:65% 35%; }
-    /* layout B: text top, image bottom */
-    .slide.text-top { grid-template-rows:auto 1fr; grid-template-columns:1fr; }
-    /* layout C: full content (no image) */
-    .slide.full-text { grid-template-columns:1fr; }
-
-    /* image panel */
-    .s-img {
-      overflow:hidden; background:#060f1e;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .s-img img { width:100%; height:100%; object-fit:contain; padding:12px; display:block; }
-
-    /* text panel */
-    .s-text {
-      display:flex; flex-direction:column; justify-content:center;
-      padding:28px 26px;
-      background:rgba(6,13,26,.6);
-      border-left:1px solid var(--line);
+    /* Slideshow box — 55% of right height */
+    .deck-wrap {
+      flex-shrink:0;
+      height:55%;
+      position:relative;
+      background:rgba(8,15,30,.8);
+      border:1px solid var(--line);
+      border-radius:14px;
       overflow:hidden;
     }
-    .slide.text-top .s-text {
-      border-left:none;
-      border-bottom:1px solid var(--line);
-      padding:20px 28px;
-    }
-    .slide.full-text .s-text {
-      border-left:none;
-      padding:36px 44px;
-      justify-content:flex-start;
-    }
 
-    .s-badge {
-      display:inline-block;
-      font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
-      color:var(--accent); background:rgba(77,184,255,.1); border:1px solid rgba(77,184,255,.2);
-      border-radius:100px; padding:3px 10px; margin-bottom:10px; width:fit-content;
-    }
-    .s-title {
-      font-family:'Playfair Display',serif;
-      font-size:clamp(1.1rem,2.2vw,1.55rem);
-      line-height:1.2; margin-bottom:10px; color:var(--text);
-    }
-    .s-title em { color:var(--accent); font-style:italic; }
-    .s-title .hi2 { color:var(--accent-2); }
-    .s-title .hi3 { color:var(--ok); }
+    /* empty space below */
+    .below-deck { flex:1; }
 
-    .s-body { font-size:.82rem; color:var(--muted); line-height:1.7; }
-    .s-body strong { color:var(--text); }
-    .s-body .accent { color:var(--accent); font-weight:700; }
-    .s-body .ok { color:var(--ok); font-weight:700; }
-    .s-body .pink { color:var(--accent-3); font-weight:700; }
-
-    /* bullet list in slides */
-    .s-list { list-style:none; display:flex; flex-direction:column; gap:8px; margin-top:6px; }
-    .s-list li { display:flex; align-items:flex-start; gap:8px; font-size:.82rem; color:var(--muted); line-height:1.55; }
-    .s-list li::before { content:"→"; color:var(--accent); flex-shrink:0; font-weight:700; margin-top:1px; }
-    .s-list li strong { color:var(--text); }
-
-    /* stat chips */
-    .stat-row { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
-    .stat-chip {
-      padding:8px 14px; border-radius:10px;
-      background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.15);
-      text-align:center;
-    }
-    .stat-chip .sv { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); display:block; line-height:1; }
-    .stat-chip .sl { font-size:.62rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; display:block; margin-top:2px; }
-
-    /* time table */
-    .time-tbl { width:100%; border-collapse:collapse; margin-top:10px; }
-    .time-tbl tr { border-bottom:1px solid rgba(77,184,255,.08); }
-    .time-tbl tr:last-child { border-bottom:none; }
-    .time-tbl td { padding:6px 4px; font-size:.78rem; }
-    .time-tbl td:first-child { color:var(--muted); }
-    .time-tbl td:last-child { text-align:right; font-weight:700; }
-    .bad { color:#fc8181; }
-    .good { color:var(--ok); }
-
-    /* pipeline chain */
-    .chain {
-      display:flex; align-items:center; flex-wrap:wrap; gap:0; margin-top:14px;
-    }
-    .chain-step {
-      display:flex; flex-direction:column; align-items:center; gap:4px;
-      padding:10px 14px;
-      background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.18);
-      border-radius:10px; min-width:80px; text-align:center;
-    }
-    .chain-step .cs-icon { font-size:1.2rem; }
-    .chain-step .cs-name { font-size:.66rem; font-weight:700; color:var(--accent); }
-    .chain-step .cs-tool { font-size:.6rem; color:var(--muted); }
-    .chain-arrow { color:var(--accent-2); font-size:1rem; padding:0 4px; }
-
-    /* scope table */
-    .scope-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:10px; }
-    .scope-card {
-      padding:12px 14px; border-radius:10px;
-      background:rgba(77,184,255,.05); border:1px solid rgba(77,184,255,.12);
-    }
-    .scope-card .sc-label { font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--accent-2); margin-bottom:6px; }
-    .scope-card .sc-val { font-size:.78rem; color:var(--muted); line-height:1.5; }
-
-    /* CTA slide */
-    .cta-center {
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:14px; height:100%;
-      background:linear-gradient(135deg,rgba(77,184,255,.06),rgba(167,139,250,.06));
-    }
-    .cta-icon-big { width:52px; height:52px; border-radius:14px; background:rgba(77,184,255,.12); border:1px solid rgba(77,184,255,.25); display:flex; align-items:center; justify-content:center; }
-    .cta-icon-big svg { width:26px; height:26px; color:var(--accent); }
-    .cta-big-title { font-family:'Playfair Display',serif; font-size:1.4rem; text-align:center; }
-    .cta-big-desc { font-size:.82rem; color:var(--muted); text-align:center; max-width:300px; line-height:1.6; }
-    .cta-big-btn {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 26px; border-radius:10px; font-size:.82rem; font-weight:700;
-      text-decoration:none; background:var(--accent); color:#060d1a; transition:all .22s;
-    }
-    .cta-big-btn:hover { background:#7aceff; transform:translateY(-3px); box-shadow:0 8px 22px rgba(77,184,255,.3); }
-    .cta-big-btn svg { width:14px; height:14px; }
-
-    /* ── CONTROLS BAR ── */
+    /* controls */
     .controls-bar {
-      flex-shrink:0;
-      height:46px;
-      border-top:1px solid var(--line);
-      display:flex; align-items:center; gap:10px;
-      padding:0 18px;
-      background:rgba(6,13,26,.7);
+      flex-shrink:0; height:40px;
+      display:flex; align-items:center; gap:8px;
     }
-    .c-btn {
-      width:30px; height:30px; border-radius:7px;
-      background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.18);
-      color:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center;
-      transition:all .18s; flex-shrink:0;
-    }
+    .c-btn { width:30px; height:30px; border-radius:7px; background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.18); color:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .18s; flex-shrink:0; }
     .c-btn:hover { background:rgba(77,184,255,.16); }
     .c-btn svg { width:12px; height:12px; }
-    .c-pause {
-      width:30px; height:30px; border-radius:7px;
-      background:rgba(167,139,250,.07); border:1px solid rgba(167,139,250,.18);
-      color:var(--accent-2); cursor:pointer; display:flex; align-items:center; justify-content:center;
-      transition:all .18s; flex-shrink:0;
-    }
+    .c-pause { width:30px; height:30px; border-radius:7px; background:rgba(167,139,250,.07); border:1px solid rgba(167,139,250,.18); color:var(--accent-2); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .18s; flex-shrink:0; }
     .c-pause:hover { background:rgba(167,139,250,.15); }
     .c-pause svg { width:12px; height:12px; }
     .c-counter { font-size:.7rem; font-weight:600; color:var(--muted); flex:1; text-align:center; }
@@ -267,14 +115,124 @@
     .c-dots { display:flex; gap:5px; align-items:center; }
     .c-dot { width:5px; height:5px; border-radius:50%; background:rgba(77,184,255,.2); border:1px solid rgba(77,184,255,.3); cursor:pointer; transition:all .2s; }
     .c-dot.active { background:var(--accent); width:14px; border-radius:3px; box-shadow:0 0 5px rgba(77,184,255,.4); }
-    .prog-wrap { flex-shrink:0; width:80px; height:3px; background:rgba(77,184,255,.1); border-radius:2px; overflow:hidden; }
+    .prog-wrap { width:70px; height:3px; background:rgba(77,184,255,.1); border-radius:2px; overflow:hidden; flex-shrink:0; }
     .prog-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); width:0%; transition:width .1s linear; }
+
+    /* ── SLIDES ── */
+    .slide {
+      position:absolute; inset:0;
+      opacity:0; transition:opacity .6s ease;
+      pointer-events:none;
+    }
+    .slide.active { opacity:1; pointer-events:all; }
+
+    /* TEXT-ONLY SLIDE — centered, big */
+    .slide.s-textonly {
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:28px 36px; text-align:center;
+      background:linear-gradient(135deg,rgba(77,184,255,.04),rgba(167,139,250,.03));
+    }
+
+    /* IMAGE SLIDE — text top 38%, image bottom 62% */
+    .slide.s-imgslide {
+      display:grid;
+      grid-template-rows:38% 62%;
+    }
+
+    /* CTA slide */
+    .slide.s-cta {
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      padding:24px; text-align:center;
+      background:linear-gradient(135deg,rgba(77,184,255,.06),rgba(167,139,250,.06));
+    }
+
+    /* shared text elements */
+    .s-badge {
+      font-size:.55rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--accent); background:rgba(77,184,255,.1); border:1px solid rgba(77,184,255,.2);
+      border-radius:100px; padding:3px 10px; margin-bottom:10px; display:inline-block;
+    }
+    .s-title {
+      font-family:'Playfair Display',serif;
+      font-size:clamp(1rem,2.4vw,1.45rem);
+      line-height:1.25; color:var(--text); margin-bottom:8px;
+    }
+    .s-title em { color:var(--accent); font-style:italic; }
+    .s-title .hi2 { color:var(--accent-2); }
+    .s-title .hi3 { color:var(--ok); }
+    .s-body { font-size:.78rem; color:var(--muted); line-height:1.65; }
+    .s-body strong { color:var(--text); }
+    .s-body .accent { color:var(--accent); font-weight:600; }
+    .s-body .ok { color:var(--ok); font-weight:600; }
+
+    /* image panel inside imgslide */
+    .s-img-panel { overflow:hidden; background:#060f1e; }
+    .s-img-panel img { width:100%; height:100%; object-fit:contain; padding:8px; display:block; }
+
+    /* text panel inside imgslide */
+    .s-top-text {
+      display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:14px 22px 10px;
+      border-bottom:1px solid var(--line);
+      background:rgba(6,13,26,.7);
+    }
+
+    /* time table */
+    .time-tbl { width:100%; border-collapse:collapse; margin-top:10px; text-align:left; }
+    .time-tbl tr { border-bottom:1px solid rgba(77,184,255,.07); }
+    .time-tbl tr:last-child { border-bottom:none; }
+    .time-tbl td { padding:5px 2px; font-size:.74rem; }
+    .time-tbl td:first-child { color:var(--muted); }
+    .time-tbl td:last-child { text-align:right; font-weight:700; white-space:nowrap; }
+    .bad { color:#fc8181; }
+    .good { color:var(--ok); }
+
+    /* pipeline chain with SVG icons */
+    .chain { display:flex; align-items:center; flex-wrap:wrap; justify-content:center; gap:4px; margin-top:14px; }
+    .chain-step {
+      display:flex; flex-direction:column; align-items:center; gap:5px;
+      padding:10px 14px;
+      background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.18);
+      border-radius:10px; min-width:76px;
+    }
+    .chain-step svg { width:20px; height:20px; color:var(--accent); }
+    .chain-step .cs-name { font-size:.64rem; font-weight:700; color:var(--accent); }
+    .chain-step .cs-tool { font-size:.58rem; color:var(--muted); }
+    .chain-arrow { color:var(--accent-2); font-size:.9rem; padding:0 2px; font-weight:700; }
+
+    /* stat chips */
+    .stat-row { display:flex; flex-wrap:wrap; gap:7px; justify-content:center; margin-top:14px; }
+    .stat-chip { padding:7px 12px; border-radius:9px; background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.15); text-align:center; }
+    .stat-chip .sv { font-family:'Playfair Display',serif; font-size:1.15rem; color:var(--accent); display:block; line-height:1; }
+    .stat-chip .sl { font-size:.58rem; color:var(--muted); text-transform:uppercase; letter-spacing:.06em; display:block; margin-top:2px; }
+
+    /* bullet list */
+    .s-list { list-style:none; display:flex; flex-direction:column; gap:6px; margin-top:8px; text-align:left; }
+    .s-list li { display:flex; align-items:flex-start; gap:7px; font-size:.76rem; color:var(--muted); line-height:1.5; }
+    .s-list li::before { content:"→"; color:var(--accent); flex-shrink:0; font-weight:700; }
+    .s-list li strong { color:var(--text); }
+
+    /* before/after grid */
+    .ba-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; width:100%; max-width:480px; }
+    .ba-card { padding:12px 14px; border-radius:10px; }
+    .ba-label { font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:6px; }
+    .ba-val { font-size:.76rem; color:var(--muted); line-height:1.55; }
+
+    /* CTA */
+    .cta-icon-big { width:46px; height:46px; border-radius:12px; background:rgba(77,184,255,.12); border:1px solid rgba(77,184,255,.25); display:flex; align-items:center; justify-content:center; margin-bottom:4px; }
+    .cta-icon-big svg { width:22px; height:22px; color:var(--accent); }
+    .cta-big-title { font-family:'Playfair Display',serif; font-size:1.1rem; text-align:center; margin-bottom:6px; }
+    .cta-big-desc { font-size:.74rem; color:var(--muted); text-align:center; max-width:280px; line-height:1.6; margin-bottom:10px; }
+    .cta-big-btn { display:inline-flex; align-items:center; gap:7px; padding:10px 22px; border-radius:9px; font-size:.76rem; font-weight:700; text-decoration:none; background:var(--accent); color:#060d1a; transition:all .22s; }
+    .cta-big-btn:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
+    .cta-big-btn svg { width:13px; height:13px; }
   </style>
 </head>
 <body>
   <canvas id="stars"></canvas>
 
-  <!-- NAV -->
   <nav class="topnav">
     <a class="nav-logo" href="index.html">Ria Singh</a>
     <a class="nav-back" href="projects.html">
@@ -283,22 +241,18 @@
     </a>
   </nav>
 
-  <!-- BODY -->
   <div class="body-row">
 
-    <!-- ── LEFT STATIC PANEL ── -->
+    <!-- LEFT -->
     <div class="left">
       <div class="left-label">Portfolio Project</div>
       <div class="left-heading">FMCG Sales<br><em>Automation</em> Pipeline</div>
-
       <p class="left-problem">
-        A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single day.
+        A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single working day.
         <br><br>
-        This pipeline <strong>eliminates all of it.</strong> Python generates the data automatically at 6:30 AM. Power Query ingests and cleans every new file. VBA handles the rest. Power BI surfaces everything in one dashboard. <strong>Zero manual work</strong> after setup — saving <strong>30–40 hours a month.</strong>
+        This pipeline <strong>eliminates all of it.</strong> Python generates fresh data at 6:30 AM via Task Scheduler. Power Query ingests and cleans every new file automatically. Three VBA macros handle the rest. Power BI surfaces everything in one executive dashboard. <strong>Zero manual work</strong> after setup — saving <strong>30–40 hours a month.</strong>
       </p>
-
       <div class="divider"></div>
-
       <div class="stack-label">Tech Stack</div>
       <div class="stack-row">
         <span class="stack-pill">Python</span>
@@ -308,7 +262,6 @@
         <span class="stack-pill">Power BI</span>
         <span class="stack-pill">DAX</span>
       </div>
-
       <div class="btn-row">
         <a class="btn-main btn-blue" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
@@ -321,188 +274,161 @@
       </div>
     </div>
 
-    <!-- ── RIGHT SLIDESHOW ── -->
+    <!-- RIGHT -->
     <div class="right">
-      <div class="deck" id="deck">
+      <div class="slide-label">Project Walkthrough</div>
 
-        <!-- SLIDE 1: The Problem -->
-        <div class="slide full-text active">
-          <div class="s-text">
-            <span class="s-badge">01 — The Problem</span>
-            <div class="s-title">Every morning.<br>Same manual grind. <em>Every. Single. Day.</em></div>
-            <div class="s-body" style="margin-bottom:12px;">A regional FMCG distributor's analyst arrives at 8 AM. Before any actual analysis can begin, there's a queue of manual tasks waiting.</div>
-            <table class="time-tbl">
-              <tr><td>Consolidate yesterday's CSV files</td><td class="bad">15–20 min</td></tr>
-              <tr><td>Clean dirty data — dupes, blanks, negatives</td><td class="bad">20–30 min</td></tr>
-              <tr><td>Update KPI summaries and formulas</td><td class="bad">15–20 min</td></tr>
-              <tr><td>Rebuild charts for management</td><td class="bad">20–30 min</td></tr>
-              <tr><td>Export and format the PDF report</td><td class="bad">10–15 min</td></tr>
-              <tr><td style="font-weight:700;color:var(--text);">Total — every single morning</td><td class="bad" style="font-size:.9rem;">80–115 min</td></tr>
-              <tr><td style="font-weight:700;color:var(--text);">Monthly cost</td><td class="bad" style="font-size:.9rem;">30–40 hrs</td></tr>
-            </table>
+      <div class="deck-wrap" id="deck">
+
+        <!-- S1: The Problem -->
+        <div class="slide s-textonly active">
+          <span class="s-badge">01 — The Problem</span>
+          <div class="s-title">Every morning.<br>Same manual grind. <em>Every single day.</em></div>
+          <table class="time-tbl" style="max-width:400px;">
+            <tr><td>Consolidate CSV files</td><td class="bad">15–20 min</td></tr>
+            <tr><td>Clean data — dupes, blanks, negatives</td><td class="bad">20–30 min</td></tr>
+            <tr><td>Update KPI summaries</td><td class="bad">15–20 min</td></tr>
+            <tr><td>Rebuild charts for management</td><td class="bad">20–30 min</td></tr>
+            <tr><td>Export and format PDF report</td><td class="bad">10–15 min</td></tr>
+            <tr><td><strong style="color:var(--text);">Total every morning</strong></td><td class="bad" style="font-size:.85rem;">80–115 min</td></tr>
+            <tr><td><strong style="color:var(--text);">Monthly cost</strong></td><td class="bad" style="font-size:.85rem;">30–40 hrs</td></tr>
+          </table>
+        </div>
+
+        <!-- S2: The Solution — chain -->
+        <div class="slide s-textonly">
+          <span class="s-badge">02 — The Solution</span>
+          <div class="s-title">One automated chain.<br><span class="hi3">Zero manual steps.</span></div>
+          <div class="chain">
+            <!-- Python -->
+            <div class="chain-step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.5 2 8 3.5 8 5v2h4v1H6.5C5 8 4 9 4 11s1 3.5 2.5 3.5H7v-2s-.5-1.5 1.5-1.5h5c1.5 0 2.5-1 2.5-2.5V5c0-1.5-1-3-4-3zM8.5 4.5a.75.75 0 110 1.5.75.75 0 010-1.5z"/><path d="M12 22c3.5 0 4-1.5 4-3v-2h-4v-1h5.5c1.5 0 2.5-1 2.5-3s-1-3.5-2.5-3.5H17v2s.5 1.5-1.5 1.5h-5c-1.5 0-2.5 1-2.5 2.5v4c0 1.5 1 3 4 3zm3.5-2.5a.75.75 0 110-1.5.75.75 0 010 1.5z"/></svg>
+              <span class="cs-name">Generate</span>
+              <span class="cs-tool">Python</span>
+            </div>
+            <span class="chain-arrow">→</span>
+            <!-- Scheduler -->
+            <div class="chain-step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+              <span class="cs-name">Schedule</span>
+              <span class="cs-tool">Task Scheduler</span>
+            </div>
+            <span class="chain-arrow">→</span>
+            <!-- Power Query -->
+            <div class="chain-step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 10h10M4 14h12M4 18h8"/><path d="M19 14l2 2-2 2"/></svg>
+              <span class="cs-name">Clean</span>
+              <span class="cs-tool">Power Query</span>
+            </div>
+            <span class="chain-arrow">→</span>
+            <!-- VBA -->
+            <div class="chain-step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9l2 2-2 2M13 15h3"/></svg>
+              <span class="cs-name">Automate</span>
+              <span class="cs-tool">VBA</span>
+            </div>
+            <span class="chain-arrow">→</span>
+            <!-- Power BI -->
+            <div class="chain-step">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17V13M11 17V9M15 17V11M19 17V7"/></svg>
+              <span class="cs-name">Visualise</span>
+              <span class="cs-tool">Power BI</span>
+            </div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-chip"><span class="sv">8,353+</span><span class="sl">Orders</span></div>
+            <div class="stat-chip"><span class="sv">5</span><span class="sl">Regions</span></div>
+            <div class="stat-chip"><span class="sv">10</span><span class="sl">Sales Reps</span></div>
+            <div class="stat-chip"><span class="sv">30</span><span class="sl">SKUs</span></div>
+            <div class="stat-chip" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.2);"><span class="sv" style="color:var(--ok);">0</span><span class="sl">Manual Steps</span></div>
           </div>
         </div>
 
-        <!-- SLIDE 2: The Solution — pipeline chain -->
-        <div class="slide full-text">
-          <div class="s-text" style="padding:28px 36px;">
-            <span class="s-badge">02 — The Solution</span>
-            <div class="s-title">One automated chain.<br><span class="hi3">Zero manual steps.</span></div>
-            <div class="s-body">Every layer hands off to the next automatically. Break one piece and the whole chain stops — which means every piece has to work.</div>
-            <div class="chain">
-              <div class="chain-step"><span class="cs-icon">🐍</span><span class="cs-name">Generate</span><span class="cs-tool">Python</span></div>
-              <span class="chain-arrow">→</span>
-              <div class="chain-step"><span class="cs-icon">⏰</span><span class="cs-name">Trigger</span><span class="cs-tool">Task Scheduler</span></div>
-              <span class="chain-arrow">→</span>
-              <div class="chain-step"><span class="cs-icon">🧹</span><span class="cs-name">Clean</span><span class="cs-tool">Power Query</span></div>
-              <span class="chain-arrow">→</span>
-              <div class="chain-step"><span class="cs-icon">⚡</span><span class="cs-name">Automate</span><span class="cs-tool">VBA</span></div>
-              <span class="chain-arrow">→</span>
-              <div class="chain-step"><span class="cs-icon">📊</span><span class="cs-name">Visualise</span><span class="cs-tool">Power BI</span></div>
-            </div>
-            <div class="stat-row" style="margin-top:18px;">
-              <div class="stat-chip"><span class="sv">8,353+</span><span class="sl">Orders</span></div>
-              <div class="stat-chip"><span class="sv">5</span><span class="sl">Regions</span></div>
-              <div class="stat-chip"><span class="sv">10</span><span class="sl">Sales Reps</span></div>
-              <div class="stat-chip"><span class="sv">30</span><span class="sl">SKUs</span></div>
-              <div class="stat-chip"><span class="sv">300</span><span class="sl">Customers</span></div>
-              <div class="stat-chip" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.2);"><span class="sv" style="color:var(--ok);">0</span><span class="sl">Manual steps</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SLIDE 3: CSV folder — pipeline proof -->
-        <div class="slide img-left">
-          <div class="s-img">
-            <img src="assets/fmcg/slide-folder.png" alt="Daily CSV folder showing dated files"/>
-          </div>
-          <div class="s-text">
+        <!-- S3: CSV folder -->
+        <div class="slide s-imgslide">
+          <div class="s-top-text">
             <span class="s-badge">03 — Live Pipeline</span>
-            <div class="s-title">A new file.<br>Every morning.<br><em>Automatically.</em></div>
-            <div class="s-body">
-              Task Scheduler wakes up at <span class="accent">6:30 AM</span> and fires the Python script. A fresh dated CSV appears in the folder before the analyst's coffee is ready.
-              <br><br>
-              These file timestamps are the most honest proof the automation works. <span class="ok">No human triggered these.</span>
-            </div>
+            <div class="s-title">A new file, every morning. <em>Automatically.</em></div>
+            <div class="s-body">Task Scheduler fires at <span class="accent">6:30 AM</span>. A dated CSV appears before the analyst opens their laptop. <span class="ok">No human triggered these.</span></div>
           </div>
+          <div class="s-img-panel"><img src="assets/fmcg/slide-folder.png" alt="Daily CSV folder"/></div>
         </div>
 
-        <!-- SLIDE 4: Power Query -->
-        <div class="slide img-left">
-          <div class="s-img">
-            <img src="assets/fmcg/slide-powerquery.png" alt="Power Query Applied Steps panel"/>
+        <!-- S4: Power Query -->
+        <div class="slide s-imgslide">
+          <div class="s-top-text">
+            <span class="s-badge">04 — Power Query</span>
+            <div class="s-title">15 cleaning steps. <em>Written once. Run forever.</em></div>
+            <div class="s-body">Removes dupes · fixes nulls · strips negatives · calculates revenue. Every new file, same treatment. <span class="accent">Automatic.</span></div>
           </div>
-          <div class="s-text">
-            <span class="s-badge">04 — Data Cleaning</span>
-            <div class="s-title">15 cleaning steps.<br><em>Written once.</em><br>Run forever.</div>
-            <div class="s-body">
-              Power Query connects to the folder — not a file. Every new CSV that drops gets processed through the same steps automatically.
-            </div>
-            <ul class="s-list" style="margin-top:10px;">
-              <li><strong>Removes</strong> duplicate order IDs</li>
-              <li><strong>Strips</strong> negative quantity rows</li>
-              <li><strong>Fixes</strong> blank customer names and regions</li>
-              <li><strong>Calculates</strong> revenue and net revenue</li>
-            </ul>
-          </div>
+          <div class="s-img-panel"><img src="assets/fmcg/slide-powerquery.png" alt="Power Query Applied Steps"/></div>
         </div>
 
-        <!-- SLIDE 5: EDA Sheet -->
-        <div class="slide img-left">
-          <div class="s-img">
-            <img src="assets/fmcg/slide-eda.png" alt="EDA summary sheet with KPIs"/>
+        <!-- S5: EDA -->
+        <div class="slide s-imgslide">
+          <div class="s-top-text">
+            <span class="s-badge">05 — Live EDA</span>
+            <div class="s-title"><em>₹1.66 Crore. 8,353 orders.</em> Zero manual updates.</div>
+            <div class="s-body">Six structured blocks pull from the <span class="accent">sales_data</span> table. Every number refreshes <span class="ok">instantly</span> when new data loads.</div>
           </div>
-          <div class="s-text">
-            <span class="s-badge">05 — Live EDA Layer</span>
-            <div class="s-title"><em>₹1.66 Crore.</em><br>8,353 orders.<br>Zero manual updates.</div>
-            <div class="s-body">
-              Six structured summary blocks in Excel pull directly from the <span class="accent">sales_data</span> table using structured references.
-              <br><br>
-              When Power Query loads a new day's data, every number in every block updates <span class="ok">instantly</span> — no formula editing, no copy-paste.
-            </div>
-          </div>
+          <div class="s-img-panel"><img src="assets/fmcg/slide-eda.png" alt="EDA summary sheet"/></div>
         </div>
 
-        <!-- SLIDE 6: LOG Sheet -->
-        <div class="slide img-left">
-          <div class="s-img">
-            <img src="assets/fmcg/slide-log.png" alt="VBA audit LOG sheet"/>
-          </div>
-          <div class="s-text">
+        <!-- S6: LOG -->
+        <div class="slide s-imgslide">
+          <div class="s-top-text">
             <span class="s-badge">06 — Audit Trail</span>
-            <div class="s-title">Every run.<br><em>On record.</em><br>Automatically.</div>
-            <div class="s-body">
-              VBA writes a timestamped entry after every refresh — row count, return orders, data quality flags.
-              <br><br>
-              Row counts climbing <span class="accent">~500 per day</span>. Unknown customers and unassigned regions at <span class="ok">zero every single run</span> — confirming the cleaning pipeline catches every issue.
-            </div>
+            <div class="s-title">Every run. <em>On record.</em> Automatically.</div>
+            <div class="s-body">Row counts climb <span class="accent">~500 per day</span>. Unknown customers and unassigned regions at <span class="ok">zero every run</span> — Power Query catches everything.</div>
           </div>
+          <div class="s-img-panel"><img src="assets/fmcg/slide-log.png" alt="VBA LOG sheet"/></div>
         </div>
 
-        <!-- SLIDE 7: Dashboard -->
-        <div class="slide img-left">
-          <div class="s-img">
-            <img src="assets/fmcg/slide-dashboard.png" alt="Power BI executive dashboard"/>
-          </div>
-          <div class="s-text">
+        <!-- S7: Dashboard -->
+        <div class="slide s-imgslide">
+          <div class="s-top-text">
             <span class="s-badge">07 — Executive Dashboard</span>
-            <div class="s-title">Everything<br>a manager needs.<br><em>One screen.</em></div>
-            <div class="s-body">
-              <span class="accent">5 KPI cards</span> — Revenue, Net Revenue, Orders, AOV, Return Rate
-              <br><br>
-              Daily trend line · Category breakdown · Salesperson ranking · Channel distribution · <span class="ok">Region slicer</span> for instant territory filtering.
-              <br><br>
-              One-click refresh. Always current.
+            <div class="s-title">Everything a manager needs. <em>One screen.</em></div>
+            <div class="s-body">5 KPI cards · Daily trend · Category & salesperson breakdown · Channel donut · <span class="accent">Region slicer</span>. One-click refresh.</div>
+          </div>
+          <div class="s-img-panel"><img src="assets/fmcg/slide-dashboard.png" alt="Power BI dashboard"/></div>
+        </div>
+
+        <!-- S8: Time Saved -->
+        <div class="slide s-textonly">
+          <span class="s-badge">08 — The Impact</span>
+          <div class="s-title">From <span style="color:#fc8181;">80–115 min</span> a day<br>to <span class="hi3">under 5 minutes.</span></div>
+          <div class="ba-grid">
+            <div class="ba-card" style="background:rgba(252,129,129,.06);border:1px solid rgba(252,129,129,.2);">
+              <div class="ba-label" style="color:#fc8181;">Without pipeline</div>
+              <div class="ba-val">80–115 min every morning<br>22 working days/month<br><strong style="color:#fc8181;">30–40 hours lost</strong></div>
+            </div>
+            <div class="ba-card" style="background:rgba(52,211,153,.06);border:1px solid rgba(52,211,153,.2);">
+              <div class="ba-label" style="color:var(--ok);">With pipeline</div>
+              <div class="ba-val">Open Excel, open Power BI<br>One click each<br><strong style="color:var(--ok);">Under 5 minutes</strong></div>
             </div>
           </div>
         </div>
 
-        <!-- SLIDE 8: Time Saved -->
-        <div class="slide full-text">
-          <div class="s-text" style="padding:28px 44px;">
-            <span class="s-badge">08 — The Impact</span>
-            <div class="s-title">From <span style="color:#fc8181;">80–115 minutes</span> a day<br>to <span class="hi3">under 5 minutes.</span></div>
-            <div class="s-body" style="margin-bottom:14px;">For a company doing this manually, here is the monthly math:</div>
-            <div class="scope-grid">
-              <div class="scope-card" style="background:rgba(252,129,129,.06);border-color:rgba(252,129,129,.2);">
-                <div class="sc-label" style="color:#fc8181;">Without this pipeline</div>
-                <div class="sc-val">
-                  80–115 min every morning<br>
-                  22 working days a month<br>
-                  <strong style="color:#fc8181;font-size:.95rem;">30–40 hours lost monthly</strong>
-                </div>
-              </div>
-              <div class="scope-card" style="background:rgba(52,211,153,.06);border-color:rgba(52,211,153,.2);">
-                <div class="sc-label" style="color:var(--ok);">With this pipeline</div>
-                <div class="sc-val">
-                  Open Excel, open Power BI<br>
-                  One click each<br>
-                  <strong style="color:var(--ok);font-size:.95rem;">Under 5 minutes total</strong>
-                </div>
-              </div>
-            </div>
-            <div class="s-body" style="margin-top:14px;">This is not a portfolio dashboard. It is a working automation that mirrors what mid-size FMCG and retail companies actually need.</div>
+        <!-- S9: CTA -->
+        <div class="slide s-cta">
+          <div class="cta-icon-big">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </div>
-        </div>
-
-        <!-- SLIDE 9: Real World + CTA -->
-        <div class="slide full-text">
-          <div class="cta-center">
-            <div class="cta-icon-big">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            </div>
-            <div class="cta-big-title">Production-ready.<br>Source-agnostic. Scalable.</div>
-            <div class="cta-big-desc">Replace the Python simulator with a real ERP export, POS dump, or field sales CSV — the rest of the pipeline is unchanged. The same architecture lifts directly to Azure, SharePoint, and Power BI Service.</div>
-            <a class="cta-big-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
-              View Full Project on GitHub
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-            </a>
-          </div>
+          <div class="cta-big-title">Production-ready.<br>Source-agnostic. Scalable.</div>
+          <div class="cta-big-desc">Replace Python with a real ERP export or POS dump — the rest is unchanged. The same stack lifts directly to Azure, SharePoint, and Power BI Service.</div>
+          <a class="cta-big-btn" href="https://github.com/ria08/fmcg-sales-automation" target="_blank" rel="noreferrer">
+            View Full Project on GitHub
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
         </div>
 
       </div>
 
-      <!-- CONTROLS -->
+      <!-- empty space below deck -->
+      <div class="below-deck"></div>
+
+      <!-- controls pinned below deck -->
       <div class="controls-bar">
         <button class="c-btn" onclick="nav(-1)">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
