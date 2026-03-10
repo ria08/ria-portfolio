@@ -47,14 +47,14 @@
 
     /* ══ LEFT ══ */
     .left {
-      display:flex; flex-direction:column; justify-content:center;
+      display:flex; flex-direction:column; justify-content:flex-start;
       border-right:1px solid var(--line);
-      padding:32px 36px;
+      padding:28px 36px 32px;
       overflow:hidden;
       background:linear-gradient(180deg,rgba(77,184,255,.03) 0%,transparent 60%);
     }
-    .left-label { font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; }
-    .left-heading { font-family:'Playfair Display',serif; font-size:1.6rem; line-height:1.15; margin-bottom:12px; }
+    .left-label { font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; text-align:center; }
+    .left-heading { font-family:'Playfair Display',serif; font-size:1.6rem; line-height:1.15; margin-bottom:12px; text-align:center; }
     .left-heading em { color:var(--accent); font-style:italic; }
     .left-problem { color:var(--muted); font-size:.88rem; line-height:1.75; }
     .left-problem strong { color:var(--text); }
@@ -88,7 +88,7 @@
     /* Slideshow box — 55% of right height */
     .deck-wrap {
       flex-shrink:0;
-      height:55%;
+      height:70%;
       position:relative;
       background:rgba(8,15,30,.8);
       border:1px solid var(--line);
