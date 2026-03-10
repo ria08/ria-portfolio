@@ -53,17 +53,16 @@
       overflow:hidden;
       background:linear-gradient(180deg,rgba(77,184,255,.03) 0%,transparent 60%);
     }
-    .left-label { font-size:.58rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:6px; text-align:center; }
-    .left-heading { font-family:'Playfair Display',serif; font-size:1.6rem; line-height:1.15; margin-bottom:12px; text-align:center; }
+    .left-heading { font-family:'Playfair Display',serif; font-size:1.35rem; line-height:1.2; margin-top:2px; margin-bottom:18px; text-align:left; white-space:nowrap; font-weight:700; }
     .left-heading em { color:var(--accent); font-style:italic; }
-    .left-problem { color:var(--muted); font-size:.88rem; line-height:1.75; }
-    .left-problem strong { color:var(--text); }
+    .left-problem { color:var(--muted); font-size:.88rem; line-height:1.75; text-align:center; margin-bottom:18px; }
+    .left-problem strong { color:var(--muted); font-weight:400; }
     .divider { height:1px; background:var(--line); margin:16px 0; }
-    .stack-label { font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; }
+    .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; }
     .stack-row { display:flex; flex-wrap:wrap; gap:6px; }
-    .stack-pill { font-size:.66rem; font-weight:700; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
-    .btn-row { display:flex; gap:8px; margin-top:14px; justify-content:center; }
-    .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:700; text-decoration:none; transition:all .22s; white-space:nowrap; }
+    .stack-pill { font-size:.66rem; font-weight:400; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
+    .btn-row { display:flex; gap:8px; margin-top:18px; justify-content:center; }
+    .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:400; text-decoration:none; transition:all .22s; white-space:nowrap; }
     .btn-main svg { width:13px; height:13px; }
     .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
     .btn-blue:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
@@ -261,8 +260,7 @@
 
     <!-- LEFT -->
     <div class="left">
-      <div class="left-label">Portfolio Project</div>
-      <div class="left-heading">FMCG Sales<br><em>Automation</em> Pipeline</div>
+      <div class="left-heading">FMCG Sales <em>Automation</em> Pipeline</div>
       <p class="left-problem">
         A regional FMCG distributor was losing <strong>80–115 minutes every morning</strong> to manual sales reporting. Consolidating CSVs by hand. Cleaning dirty data. Rebuilding charts. Exporting reports. Repeated every single working day.
         <br><br>
