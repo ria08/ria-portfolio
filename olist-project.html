@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Olist Retention Analysis | Ria Singh</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #060d1a;
+      --accent: #4db8ff;
+      --accent-2: #a78bfa;
+      --accent-3: #f472b6;
+      --ok: #34d399;
+      --text: #e8f0ff;
+      --muted: #8ba3c7;
+      --line: rgba(100,160,255,0.15);
+    }
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    html, body { min-height:100%; }
+    body {
+      font-family:'DM Sans',sans-serif;
+      background:var(--bg); color:var(--text);
+      min-height:100vh;
+    }
+    canvas#stars { position:fixed; inset:0; z-index:0; pointer-events:none; }
+
+    /* ── NAV ── */
+    .topnav {
+      flex-shrink:0; height:48px; position:relative; z-index:100;
+      background:rgba(6,13,26,.94); backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between;
+      padding:0 28px;
+    }
+    .nav-logo { font-family:'Playfair Display',serif; font-size:.9rem; color:var(--accent); text-decoration:none; }
+    .nav-back { display:inline-flex; align-items:center; gap:5px; font-size:.68rem; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .nav-back:hover { color:var(--accent); }
+    .nav-back svg { width:12px; height:12px; }
+
+    /* ── BODY ── */
+    .body-row {
+      position:relative;
+      z-index:2;
+      max-width:980px;
+      width:100%;
+      margin:0 auto;
+      padding:24px 28px 34px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    /* ══ LEFT ══ */
+    .left {
+      display:flex; flex-direction:column; justify-content:flex-start;
+      padding:0;
+      overflow:visible;
+      background:none;
+    }
+    .left-heading { font-family:'Playfair Display',serif; font-size:1.58rem; line-height:1.24; margin:0; text-align:center; white-space:normal; font-weight:700; }
+    .left-heading em { color:var(--accent); font-style:italic; }
+    .left-problem { color:var(--muted); font-size:.98rem; line-height:1.86; text-align:left; margin-bottom:12px; }
+    .left-problem strong { color:var(--muted); font-weight:400; }
+    .divider { height:1px; background:var(--line); margin:16px 0; }
+    .stack-label { font-size:.58rem; font-weight:400; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-2); margin-bottom:8px; text-align:center; }
+    .stack-row { display:flex; flex-wrap:wrap; gap:6px; justify-content:center; }
+    .stack-pill { font-size:.66rem; font-weight:400; color:var(--accent-2); background:rgba(167,139,250,.09); border:1px solid rgba(167,139,250,.22); border-radius:100px; padding:4px 10px; }
+    .btn-row { display:flex; gap:8px; margin-top:18px; justify-content:center; flex-wrap:wrap; }
+    .btn-main { display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 16px; border-radius:8px; font-size:.75rem; font-weight:400; text-decoration:none; transition:all .22s; white-space:nowrap; }
+    .btn-main svg { width:13px; height:13px; }
+    .btn-blue { background:var(--accent); color:#060d1a; border:1px solid transparent; }
+    .btn-blue:hover { background:#7aceff; transform:translateY(-2px); box-shadow:0 6px 18px rgba(77,184,255,.3); }
+    .btn-ghost { border:1px solid rgba(77,184,255,.3); color:var(--accent); background:rgba(77,184,255,.07); }
+    .btn-ghost:hover { background:rgba(77,184,255,.14); transform:translateY(-2px); }
+
+    /* ══ RIGHT ══ */
+    .right {
+      display:flex; flex-direction:column;
+      padding:0;
+      overflow:visible;
+      min-height:0;
+      gap:10px;
+    }
+
+    .slide-label {
+      flex-shrink:0;
+      font-size:.58rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+      color:var(--accent); display:flex; align-items:center; gap:8px;
+    }
+    .slide-label::after { content:""; flex:1; height:1px; background:linear-gradient(90deg,rgba(77,184,255,.3),transparent); }
+
+    .deck-wrap {
+      width:100%;
+      aspect-ratio:16/10.8;
+      min-height:520px;
+      position:relative;
+      background:rgba(8,15,30,.8);
+      border:1px solid var(--line);
+      border-radius:14px;
+      overflow:hidden;
+    }
+    @media (max-width:820px) {
+      .body-row { padding:20px 16px 24px; }
+      .deck-wrap { aspect-ratio:4/3; min-height:unset; }
+    }
+
+    /* controls */
+    .controls-bar {
+      flex-shrink:0; height:40px;
+      display:flex; align-items:center; gap:8px;
+    }
+    .c-btn { width:30px; height:30px; border-radius:7px; background:rgba(77,184,255,.07); border:1px solid rgba(77,184,255,.18); color:var(--accent); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .18s; flex-shrink:0; }
+    .c-btn:hover { background:rgba(77,184,255,.16); }
+    .c-btn svg { width:12px; height:12px; }
+    .c-pause { width:30px; height:30px; border-radius:7px; background:rgba(167,139,250,.07); border:1px solid rgba(167,139,250,.18); color:var(--accent-2); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:all .18s; flex-shrink:0; }
+    .c-pause:hover { background:rgba(167,139,250,.15); }
+    .c-pause svg { width:12px; height:12px; }
+    .c-counter { font-size:.7rem; font-weight:600; color:var(--muted); flex:1; text-align:center; }
+    .c-counter span { color:var(--accent); font-weight:700; }
+    .c-dots { display:flex; gap:5px; align-items:center; }
+    .c-dot { width:5px; height:5px; border-radius:50%; background:rgba(77,184,255,.2); border:1px solid rgba(77,184,255,.3); cursor:pointer; transition:all .2s; }
+    .c-dot.active { background:var(--accent); width:14px; border-radius:3px; box-shadow:0 0 5px rgba(77,184,255,.4); }
+    .prog-wrap { width:70px; height:3px; background:rgba(77,184,255,.1); border-radius:2px; overflow:hidden; flex-shrink:0; }
+    .prog-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent-2)); width:0%; transition:width .1s linear; }
+
+    /* ── SLIDES ── */
+    #deck .slide img {
+      width:100%; height:100%;
+      object-fit:contain;
+      display:block;
+      border-radius:10px;
+    }
+    #deck .slide {
+      position:absolute; inset:0;
+      opacity:0; transition:opacity .5s ease;
+      pointer-events:none;
+      background:#060d1a;
+      border-radius:10px;
+    }
+    #deck .slide.active { opacity:1; pointer-events:all; }
+  </style>
+</head>
+<body>
+  <canvas id="stars"></canvas>
+
+  <nav class="topnav">
+    <a class="nav-logo" href="index.html">Ria Singh</a>
+    <a class="nav-back" href="projects.html">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
+      All Projects
+    </a>
+  </nav>
+
+  <div class="body-row">
+    <div class="left-heading">Olist <em>Retention</em> Analysis</div>
+
+    <div class="right">
+      <div class="slide-label">Project Walkthrough</div>
+      <div class="deck-wrap" id="deck">
+        <div class="slide active"><img src="assets/olist/1_Solving-a-97percent-Retention-Crisis-Through-Data-Driven-Experimentation.png" alt="Slide 1 – Title"></div>
+        <div class="slide"><img src="assets/olist/2_Olist-Has-a-97percent-One-Time-Buyer-Rate.png" alt="Slide 2 – Business Problem"></div>
+        <div class="slide"><img src="assets/olist/3_Brazilian-B2B2C-Marketplace-Aggregator.png" alt="Slide 3 – About Olist"></div>
+        <div class="slide"><img src="assets/olist/4_The-Retention-Crisis-in-Numbers.png" alt="Slide 4 – Retention Crisis"></div>
+        <div class="slide"><img src="assets/olist/5_Dataset-Scope-September-2016-October-2018.png" alt="Slide 5 – Dataset Scope"></div>
+        <div class="slide"><img src="assets/olist/6_Data-Pipeline-Architecture-and-Modeling.png" alt="Slide 6 – Data Engineering"></div>
+        <div class="slide"><img src="assets/olist/7_Business-Performance.png" alt="Slide 7 – Power BI: Business Performance"></div>
+        <div class="slide"><img src="assets/olist/8_RFM-Segmentation-93358-Customers-Scored.png" alt="Slide 8 – RFM Methodology"></div>
+        <div class="slide"><img src="assets/olist/9_Customer-Analytics-and-Segmentation.png" alt="Slide 9 – Power BI: Customer Analytics"></div>
+        <div class="slide"><img src="assets/olist/10_Rdollar4606800.png" alt="Slide 10 – R$4.6M Opportunity"></div>
+        <div class="slide"><img src="assets/olist/11_Product-and-Geographic-Performance.png" alt="Slide 11 – Power BI: Products & Geography"></div>
+        <div class="slide"><img src="assets/olist/12_Delivery-Delays-Destroy-Customer-Satisfaction.png" alt="Slide 12 – Delivery Delays"></div>
+        <div class="slide"><img src="assets/olist/13_Hypothesis-A-10percent-Coupon-Drives-Repeat-Purchases.png" alt="Slide 13 – A/B Test Design"></div>
+        <div class="slide"><img src="assets/olist/14_AB-Test-Results.png" alt="Slide 14 – Power BI: A/B Test Results"></div>
+        <div class="slide"><img src="assets/olist/15_186percent-ROI-Opportunity-ie-Payback-in-Month-1.png" alt="Slide 15 – Business Impact"></div>
+        <div class="slide"><img src="assets/olist/16_Three-Data-Driven-Recommendations.png" alt="Slide 16 – Recommendations"></div>
+        <div class="slide"><img src="assets/olist/17_Rdollar46M-Opportunity-186percent-ROI-Validated.png" alt="Slide 17 – Key Takeaway"></div>
+        <div class="slide"><img src="assets/olist/18_Thank-You-Questions.png" alt="Slide 18 – Thank You"></div>
+      </div>
+
+      <div class="controls-bar">
+        <button class="c-btn" id="btn-prev" title="Previous">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 12L6 8l4-4"/></svg>
+        </button>
+        <button class="c-pause" id="btn-pause" title="Pause">
+          <svg id="ico-pause" viewBox="0 0 16 16" fill="currentColor"><rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/></svg>
+        </button>
+        <button class="c-btn" id="btn-next" title="Next">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 4l4 4-4 4"/></svg>
+        </button>
+        <div class="c-dots" id="dots"></div>
+        <div class="c-counter"><span id="cur">1</span> / <span id="tot">18</span></div>
+        <div class="prog-wrap"><div class="prog-fill" id="prog"></div></div>
+      </div>
+    </div>
+
+    <div class="left">
+      <p class="left-problem">
+        Olist had a catastrophic retention problem: <strong>97% of customers never returned</strong> for a second purchase, against an industry benchmark of 25–30%. A structural revenue ceiling that no amount of new acquisition spending could fix.
+      </p>
+      <p class="left-problem">
+        Starting from <strong>9 raw CSV files</strong>, I built a <strong>medallion-architecture pipeline</strong>, scored <strong>93,358 customers</strong> via RFM segmentation, and identified a <strong>R$4.6M revenue opportunity</strong>. A simulated A/B test validated that a targeted 10% coupon delivers a <strong>+38.6% lift in repeat purchases</strong> (p&lt;0.001) with <strong>186% ROI</strong> and payback in Month 1.
+      </p>
+      <div class="divider"></div>
+      <div class="stack-label">Tech Stack</div>
+      <div class="stack-row">
+        <span class="stack-pill">Python</span>
+        <span class="stack-pill">Pandas</span>
+        <span class="stack-pill">SQL</span>
+        <span class="stack-pill">Power BI</span>
+        <span class="stack-pill">DAX</span>
+        <span class="stack-pill">RFM Segmentation</span>
+        <span class="stack-pill">A/B Testing</span>
+        <span class="stack-pill">Medallion Architecture</span>
+      </div>
+      <div class="btn-row">
+        <a class="btn-main btn-blue" href="https://github.com/ria08/OLIST-Marketplace-Analysis" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+        <a class="btn-main btn-ghost" href="https://medium.com/@ria" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+          Read Article
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* STARFIELD */
+    (function(){
+      const c=document.getElementById('stars'),ctx=c.getContext('2d');let s=[];
+      const resize=()=>{c.width=innerWidth;c.height=innerHeight;};
+      const init=()=>{s=[];for(let i=0;i<100;i++)s.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.1+.2,a:Math.random(),da:(Math.random()-.5)*.003});};
+      const draw=()=>{ctx.clearRect(0,0,c.width,c.height);s.forEach(p=>{p.a=Math.max(.05,Math.min(1,p.a+p.da));if(p.a<=.05||p.a>=1)p.da*=-1;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(180,210,255,${p.a})`;ctx.fill();});requestAnimationFrame(draw);};
+      resize();init();draw();window.addEventListener('resize',()=>{resize();init();});
+    })();
+
+    /* SLIDESHOW */
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#deck .slide'));
+      const dotsEl = document.getElementById('dots');
+      const curEl  = document.getElementById('cur');
+      const totEl  = document.getElementById('tot');
+      const prog   = document.getElementById('prog');
+      const DELAY  = 4000;
+      let cur = 0, paused = false, progTimer, progStart, progElapsed = 0;
+
+      if(totEl) totEl.textContent = slides.length;
+
+      slides.forEach((_,i)=>{
+        const d = document.createElement('div');
+        d.className = 'c-dot' + (i===0?' active':'');
+        d.addEventListener('click', ()=>goTo(i));
+        dotsEl.appendChild(d);
+      });
+
+      function goTo(n){
+        slides[cur].classList.remove('active');
+        dotsEl.children[cur].classList.remove('active');
+        cur = (n + slides.length) % slides.length;
+        slides[cur].classList.add('active');
+        dotsEl.children[cur].classList.add('active');
+        if(curEl) curEl.textContent = cur + 1;
+        resetProg();
+        if(!paused) startProg();
+      }
+
+      function resetProg(){
+        prog.style.width='0%';
+        progElapsed=0;
+        clearInterval(progTimer);
+      }
+
+      function startProg(){
+        clearInterval(progTimer);
+        progStart = Date.now() - progElapsed;
+        progTimer = setInterval(()=>{
+          progElapsed = Date.now() - progStart;
+          prog.style.width = Math.min(100,(progElapsed/DELAY)*100) + '%';
+          if(progElapsed >= DELAY){ goTo(cur+1); }
+        }, 50);
+      }
+
+      document.getElementById('btn-prev').addEventListener('click',()=>{
+        clearInterval(progTimer);
+        progElapsed=0;
+        goTo(cur-1);
+        if(!paused) startProg();
+      });
+
+      document.getElementById('btn-next').addEventListener('click',()=>{
+        clearInterval(progTimer);
+        progElapsed=0;
+        goTo(cur+1);
+        if(!paused) startProg();
+      });
+
+      document.getElementById('btn-pause').addEventListener('click',function(){
+        paused = !paused;
+        const ico = document.getElementById('ico-pause');
+        if(paused){
+          clearInterval(progTimer);
+          ico.innerHTML = '<polygon points="5,3 19,8 5,13" fill="currentColor"/>';
+        } else {
+          startProg();
+          ico.innerHTML = '<rect x="3" y="2" width="4" height="12" rx="1"/><rect x="9" y="2" width="4" height="12" rx="1"/>';
+        }
+      });
+
+      startProg();
+    })();
+  </script>
+</body>
+</html>
